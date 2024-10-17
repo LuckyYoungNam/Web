@@ -2,7 +2,7 @@ import { Routes, Route} from 'react-router-dom';
 import Login from '../containers/login/login.container';
 import CreatePage from '../containers/create';
 import GamePage from '../containers/game';
-import MainPage from '../containers/main';
+import MainPage from '../containers/main/main.container';
 import StorePage from '../containers/storepage';
 
 // 시작 페이지 라우트
