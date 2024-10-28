@@ -1,6 +1,6 @@
 import { Routes, Route} from 'react-router-dom';
 import Login from '../containers/login/login.container';
-import CreateImgPage from '../containers/createImg';
+import CreateImgPage from '../containers/createImg/createImg.container';
 import CreateTextPage from '../containers/createText';
 import MainPage from '../containers/main/main.container';
 

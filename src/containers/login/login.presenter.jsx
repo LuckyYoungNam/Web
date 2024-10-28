@@ -11,7 +11,8 @@ const LoginUI = () => {
             </S.Group>
             <S.Logo src="/character.png"></S.Logo>
             <S.LoginBtn>
-                <img src="/kakaoLogin.png" />
+                <img src="/kakaoIcon.png"/>
+                <S.LoginContent>카카오톡 로그인</S.LoginContent>
             </S.LoginBtn>
         </S.Wrapper>
     )
