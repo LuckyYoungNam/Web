@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 export const Wrapper = styled.div`
     width: 100vw;
     height: 100vh;
-    background: #FF6640;
+    background: white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,20 +14,27 @@ export const Wrapper = styled.div`
 export const Group = styled.div`
     display:flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
-    margin-bottom: 200px;
 `
 export const Title = styled.div`
     font-size: 48px;
-    color: white;
+    color: black;
     font-weight: 500;
-    font-family: "Gugi";
+    font-family: "YoonChildfundkoreaDaeHan";
+`
+
+export const SubTitle = styled.div`
+    font-size: 18px;
+    color: black;
+    font-weight: 500;
+    font-family: "Pretendard";
 `
 
 export const Logo = styled.img`
-    width: 100%;
+    width: 40%;
     height: auto;
-    margin-left:
 `
 export const LoginBtn = styled.button`
    width: 70%;
