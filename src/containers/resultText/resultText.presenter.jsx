@@ -3,6 +3,7 @@ import ResultAnimation from "./components/resultAnimation.component";
 import ResultDisplay from "./components/resultDisplay.component";
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useStore from "../../store/useStore";
 
 
 const ResultTextUI = () => {

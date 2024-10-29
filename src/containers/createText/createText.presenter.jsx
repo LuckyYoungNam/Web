@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import * as S from "./createText.style";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
-
+import useStore from "../../store/useStore";
 const CreateTextUI = () => {
+    const { goToHome } = useStore();
     return (
         <S.Wrapper>
             <S.Header>

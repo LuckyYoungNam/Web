@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import * as S from "./myPage.style";
 import * as C from "../createText/createText.style";
-
+import useStore from "../../store/useStore";
 
 const MyPageUI = () => {
+    const { goToHome } = useStore();
     return (
         <C.Wrapper>
             <C.Header>
