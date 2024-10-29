@@ -59,17 +59,18 @@ export const Title = styled.div`
     margin-top: 2vh;
 `
 export const ImageWrapper = styled.div`
-    width: 80%;
-    height: 50%;
+    width: 70%;
+    height: 40%;
     border: 5px solid rgba(244, 244, 244, 0.9);
     border-radius: 40px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    position: relative; /* 부모 컨테이너로 설정 */
+    overflow: hidden; /* 이미지가 영역을 벗어나지 않도록 */
+    top: 16vh;
 `;
-
 export const IconWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -77,9 +78,10 @@ export const IconWrapper = styled.div`
     align-items: center;
 `
 export const PlusIcon = styled.img`
-    width: 15vw; /* 아이콘 크기 조절 */
-    height: 7vh;
+    width: 20vw; /* 아이콘 크기 조절 */
+    height: auto;
     margin-bottom: 10px; /* 아이콘과 설명 사이 여백 */
+    object-fit: cover;
 `;
 export const ButtonGroup = styled.div`
     width: 100%;
@@ -129,3 +131,13 @@ export const UploadedImage = styled.img`
 export const HiddenInput = styled.input`
     display: none;
 `;
+
+export const MainImg = styled.img`
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+    position: absolute; /* 겹치도록 설정 */
+    top: -3.5vh;
+    left: 13vw;
+    z-index: 1; /* 필요에 따라 z-index를 조정 */
+`

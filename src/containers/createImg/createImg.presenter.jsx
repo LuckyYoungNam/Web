@@ -1,16 +1,16 @@
 import * as S from "./createImg.style";
-import { useState } from "react";
-
+import useStore from "../../store/useStore";
 const CreateImgUI = ({image,handleImageUpload}) => {
+    const { goToHome } = useStore();
     return (
         <S.Wrapper>
             <S.BannerGroup>
-                <S.HomeIcon src="/homeIcon.png" />
+                <S.HomeIcon src="/homeIcon.png" onClick={goToHome}/>
                 <S.Logo>홍보사원, 영남이</S.Logo>
             </S.BannerGroup>
             <S.ContentWrapper>
-                <S.Title>대표 사진 만들기</S.Title>
-                <S.ImageWrapper>
+                <S.MainImg src="/createImg.png" />
+                <S.ImageWrapper onClick={() => document.getElementById('imageInput').click()}>
                     {image ? ( // 이미지가 있으면 이미지 표시
                         <S.UploadedImage src={image} alt="Uploaded" />
                     ) : (
