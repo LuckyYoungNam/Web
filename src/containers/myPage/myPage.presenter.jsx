@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import * as S from "./myPage.style";
 import * as C from "../createText/createText.style";
 
@@ -6,7 +7,9 @@ const MyPageUI = () => {
     return (
         <C.Wrapper>
             <C.Header>
-                <C.MenuIcon src="/menu.png" ></C.MenuIcon>
+                <Link to="/main">
+                    <C.MenuIcon src="/menu.png" ></C.MenuIcon>
+                </Link>
                 <C.Logo>홍보사원, 영남이</C.Logo>
             </C.Header> 
             <C.MainSection>

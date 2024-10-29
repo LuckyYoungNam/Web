@@ -30,7 +30,8 @@ export const MenuIcon = styled.img`
     height: auto;
     position: absolute;
     left: 0;
-    margin: 20px;
+    margin: 22px 0 0 20px;
+    top: 0;
     
     
 `;

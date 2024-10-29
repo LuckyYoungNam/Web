@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import * as S from "./createText.style";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
@@ -6,7 +7,9 @@ const CreateTextUI = () => {
     return (
         <S.Wrapper>
             <S.Header>
-                <S.MenuIcon src="/menu.png" ></S.MenuIcon>
+                <Link to="/main">
+                    <S.MenuIcon src="/menu.png" ></S.MenuIcon>
+                </Link>
                 <S.Logo>홍보사원, 영남이</S.Logo>
             </S.Header> 
             <S.MainSection>
