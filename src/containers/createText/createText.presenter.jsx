@@ -1,12 +1,12 @@
 import * as S from "./createText.style";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
-
+import useStore from "../../store/useStore";
 const CreateTextUI = () => {
+    const { goToHome } = useStore();
     return (
         <S.Wrapper>
             <S.Header>
-                <S.MenuIcon src="/menu.png" ></S.MenuIcon>
+                <S.MenuIcon src="/menu.png" onClick={goToHome}></S.MenuIcon>
                 <S.Logo>홍보사원, 영남이</S.Logo>
             </S.Header> 
             <S.MainSection>

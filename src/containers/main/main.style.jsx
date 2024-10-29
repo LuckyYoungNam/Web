@@ -49,7 +49,7 @@ export const Info = styled.div`
     top: 6%;
     font-size: 20px;
     font-weight: 700; 
-    font-family: Pretendard;
+    font-family: "Pretendard";
 `
 
 export const Group = styled.div`
@@ -86,12 +86,14 @@ export const MyPageLabel = styled.div`
     font-size: 20px;
     font-weight: 700;
     color: #2C408A;
+    font-family: "Pretendard";
 `
 
 export const MenuItemLabel = styled.div`
     font-size: 20px;
     font-weight: 700;
     color: white;
+    font-family: "Pretendard";
 `
 export const MenuItem = styled.button`
     width: 100%;

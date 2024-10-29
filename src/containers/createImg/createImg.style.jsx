@@ -30,10 +30,10 @@ export const Logo = styled.div`
     position: absolute;
     left: 50%;
     transform: translateX(-50%); /* Logo를 가운데 정렬 */
-    font-size: 32px;
+    font-size: 28px;
     font-family: "YoonChildfundkoreaDaeHan";
     color: white;
-    font-weight: 700;
+    font-weight: 600;
 `;
 export const ContentWrapper = styled.div`
     width: 100%;
@@ -51,12 +51,6 @@ export const ContentWrapper = styled.div`
         width: 100%;
         height: 90%;
     }
-`
-export const Title = styled.div`
-    color: black;
-    font-weight: 700;
-    font-size: 24px;
-    margin-top: 2vh;
 `
 export const ImageWrapper = styled.div`
     width: 70%;
@@ -94,11 +88,13 @@ export const ButtonGroup = styled.div`
 export const Label = styled.div`
     font-size: 18px;
     font-weight: 700;
+    font-family: "Pretendard";
 `
 export const Description = styled.div`
     width: 100%;
     font-size: 14px;
     color: #8C8C8C;
+    font-family: "Pretendard";
 `;
 
 export const AddBtn = styled.button`
@@ -107,8 +103,8 @@ export const AddBtn = styled.button`
     background: #496BEA;
     font-family: "Pretendard";
     color: white;
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 700;
     border: none;
     border-radius: 10px;
     display: flex;

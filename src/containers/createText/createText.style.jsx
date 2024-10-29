@@ -39,7 +39,7 @@ export const Logo = styled.div`
     font-size: 28px;
     color: #ffffff;
     display: flex;
-    font-weight: 500;
+    font-weight: 600;
     font-family: "YoonChildfundkoreaDaeHan";
 }
 `;

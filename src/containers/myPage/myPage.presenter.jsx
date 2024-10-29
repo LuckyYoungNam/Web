@@ -1,12 +1,13 @@
 import * as S from "./myPage.style";
 import * as C from "../createText/createText.style";
-
+import useStore from "../../store/useStore";
 
 const MyPageUI = () => {
+    const { goToHome } = useStore();
     return (
         <C.Wrapper>
             <C.Header>
-                <C.MenuIcon src="/menu.png" ></C.MenuIcon>
+                <C.MenuIcon src="/menu.png" onClick={goToHome}></C.MenuIcon>
                 <C.Logo>홍보사원, 영남이</C.Logo>
             </C.Header> 
             <C.MainSection>

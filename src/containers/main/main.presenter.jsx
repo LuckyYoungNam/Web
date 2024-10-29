@@ -1,7 +1,7 @@
 import * as S from "./main.style"
 import useStore from '../../store/useStore'; 
 const MainUI = () => {
-    const { goToMyPage, goToCreateImg, goToCreateText } = useStore();  // zustand 함수들 가져오기
+    const { goToMyPage, goToCreateImg, goToCreateText } = useStore();
     return (
         <S.Wrapper>
             <S.Title>홍보사원, 영남이</S.Title>
