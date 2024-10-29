@@ -57,11 +57,15 @@ export const LoginBtn = styled.button`
       opacity: 0.8;
    }
        @media (min-width: 820px) {
-        width: 20vw;
+        width: 10vw;
         height: 5vh;
     }
 `;
 
+export const KakaoIcon = styled.img`
+    width: 15%;
+    height: 50%;
+`
 export const LoginContent = styled.div`
 font-size: 15px;
 font-family: "noto sans";
