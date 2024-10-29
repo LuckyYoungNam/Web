@@ -11,6 +11,13 @@ function App() {
   useEffect(() => {
     setNavigate(navigate);  // zustand 스토어에 navigate 함수 전달
   }, [navigate, setNavigate]);
+  function setScreenSize() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+  useEffect(() => {
+    setScreenSize();
+  });
   return (
       <PageRoutes />
   );

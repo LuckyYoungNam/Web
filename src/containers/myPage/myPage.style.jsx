@@ -69,5 +69,4 @@ export const SubmitBtn = styled.button`
     outline: none;  
     margin: 0 auto; 
     margin-top: 190px;
-
 `;

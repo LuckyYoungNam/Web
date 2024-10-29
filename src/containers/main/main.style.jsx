@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 export const Wrapper = styled.div`
     width: 100vw;
-    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,6 +30,7 @@ export const MainImg = styled.img`
 
 export const MenuWrapper = styled.div`
     width: 90%;
+    height: 100%;
     flex-grow: 1; /* 이미지 아래 나머지 공간을 채움 */
     position: relative;
     top: -1.5%;
@@ -59,7 +60,7 @@ export const Group = styled.div`
     justify-content: center;
     align-items: center;
     top: 30%;
-    gap: 20px;
+    gap: 5px;
 `
 
 export const MainBtn = styled.button`
