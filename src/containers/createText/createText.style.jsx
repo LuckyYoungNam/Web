@@ -4,16 +4,19 @@ import styled from '@emotion/styled';
 export const Wrapper = styled.div`
     width: 100vw;
     height: 100vh;
-    display: flex;
     background: #496BEA;
+    position: relative; /* Logo를 가운데 배치하기 위한 기준점 설정 */
+    display: flex;
+    justify-content: flex-start;
     @media (min-width: 820px) {
-        width: 820px;
+        width: 50vw;
+        height: 100vh;
     }
-`;
+`
 
 export const Header = styled.div`
     width: 100vw;
-    height: 75px;
+    height: 80px;
     display: flex;
     position: fixed;
     top: 0;
@@ -30,7 +33,7 @@ export const MenuIcon = styled.img`
     height: auto;
     position: absolute;
     left: 0;
-    margin: 22px 0 0 20px;
+    margin: 25px 0 0 20px;
     top: 0;
     
     
@@ -46,18 +49,20 @@ export const Logo = styled.div`
 `;
 
 export const MainSection = styled.div`
-    width: 100vw;
-    height: calc(100vh - 75px);
-    background: #ffffff;
+    width: 100%;
+    height: 88%;
     display: flex;
+    position: fixed;
     flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    justify-content: start;
-    border-top-left-radius: 30px;  
-    border-top-right-radius: 30px;
-    margin-top: 75px;
+    background: white;
+    bottom: 0;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
     @media (min-width: 820px) {
-        width: 820px;
+        width: 100%;
+        height: 90%;
     }
 `;
 
@@ -66,18 +71,21 @@ export const PageTitle = styled.div`
     font-size: 20px;
     color: black;
     font-weight: 700;
-    margin-top: 20px;
+    margin-top: 5%;
     font-family: "Pretendard";
     
 `;
 
 export const createTextPad = styled.img`
-    margin-top: 50px;
     margin-left: 12px;
+    width: 80vw;
+    @media (min-width: 820px) {
+        width: 30vw;
+    }
+    
 `;
 
 export const TextArea = styled.textarea`
-    margin-top: 180px;
     font-size: 18px;
     font-weight: 500;
     font-family: "Pretendard";
@@ -87,12 +95,13 @@ export const TextArea = styled.textarea`
     outline: none;
     position: absolute;
     background: transparent;
-
+    top: 0;
+    margin-top: 150px;
+    padding: 20px;
     
 `;
 
 export const NextBtn = styled.div`
-    // background: #496BEA;
     font-size: 18px;
     color: #121212;
     font-weight: 700;
@@ -101,35 +110,38 @@ export const NextBtn = styled.div`
     flex-direction: row;
     align-items: center;
     gap: 15px;
-    // padding: 0 30px 15px 40px;
     font-family: "Pretendard";
-    margin-left: 180px;
-    
+    margin-left: 180px;    
 `;
 
+// export const ContentGroup = styled.div`
+// `
+
 export const Content = styled.div`
-    margin-top: 60px;
-    font-size: 18px;
+    vertical-align: bottom;
+    font-size: 16px;
+    display: inline-block;
     color: #121212;
     font-weight: 700;
     font-family: "Pretendard";
 `;
 
-export const Group = styled.div`
-    margin-top: 10px;
+export const ScriptGroup = styled.div`
+    margin-top: 5%;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    margin-bottom: 30px;
 `;
 
 export const FaceImg = styled.img`
-    width: 90px;
+    width: 60px;
     height: auto;
 `;
 
 export const Script = styled.div`
-    font-size: 20px;
+    font-size: 13px;
     color: gray;
     font-family: "Pretendard";
 
@@ -137,11 +149,22 @@ export const Script = styled.div`
 
 
 // resultText
+export const ResultTitle = styled.div`
+    font-size: 20px;
+    color: black;
+    font-weight: 700;
+    font-family: "Pretendard";
+    
+`;
+
 export const ContentGroup = styled.div`
-    margin-top: 10px;
+    // margin-top: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    // @media (min-height: 700px) {
+    //     margin-top: 10%;
+    // }
 `;
 
 
