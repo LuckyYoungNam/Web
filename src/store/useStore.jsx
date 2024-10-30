@@ -22,6 +22,10 @@ const useStore = create((set, get) => ({
   goToCreateText: () => {
     const navigate = get().navigateTo;
     if (navigate) navigate('/create/text');
+  },
+  goToResultText: () => {
+    const navigate = get().navigateTo;
+    if (navigate) navigate('/result/text');
   }
 }));
 

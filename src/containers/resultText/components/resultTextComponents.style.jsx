@@ -1,19 +1,17 @@
 import styled from '@emotion/styled';
-import { keyframes } from 'styled-components';
 
 
 export const Group = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     visibility: visible;
 `;
 
 
 // resultAnimation
 export const Motion = styled.div`
-    margin-top: 100px;
     margin-bottom:50px;
     display: flex;
     position: relative;
@@ -22,19 +20,13 @@ export const Motion = styled.div`
 
 `
 
-const moveUp = keyframes`
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-100px); /* 위로 100px 이동 */
-    }
-`;
-
 export const DocumentFront = styled.img`
     position: absolute;
     margin-top: 30px;
     cursor: pointer;
+    @media (max-height: 700px) {
+        width: 94%;
+    }
 
 `
 export const DocumentPaper = styled.img`
@@ -42,27 +34,42 @@ export const DocumentPaper = styled.img`
     margin-top: 10px;
     transition: transform 1s ease;
     transform: ${({ animate }) => (animate ? 'translateY(-100px)' : 'translateY(0)')};
-
+        @media (max-height: 700px) {
+        width: 80%;
+        height: 50%;
+    }
 `;
 
 export const DocumentBack = styled.img`
-
+        @media (max-height: 700px) {
+        width: 91%;
+    }
 `
 
 
 // resultDisplay
+export const resultGroup = styled.div`
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+`
+
 export const resultImg = styled.img`
-    width: 330px;
+    width: 70%;
     height: auto;
+    
 `;
 
 export const resultContent = styled.div`
     border: 3px solid #D8ECFF;
     border-radius: 7px;
     width: 330px;
-    height: 350px;
+    height: 40vh;
     margin: 0;
     padding: 0;
+    top: 0;
     box-sizing: border-box; /* 패딩과 보더 포함 */
 `;
 
@@ -83,7 +90,8 @@ export const SubmitBtn = styled.button`
     border: none;   
     outline: none;  
     margin: 0 auto; 
-    margin-top: 80px;
+    margin-top: 10%;
+
 
 `;
 

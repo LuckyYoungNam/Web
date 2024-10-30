@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const SubGroup = styled.div`
     z-index: 100;
-    margin-top: 70px;
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* 왼쪽 정렬 */
@@ -17,10 +16,11 @@ export const SubTitle = styled.div`
     text-align: left;
     align-self: flex-start;
     margin-bottom: 20px;
+    margin-top: 50px;
 `;
 
 export const InfoGroup = styled.div`
-    margin-top: 30px;
+    margin-top: 10px;
 `
 
 export const InfoText = styled.div`
@@ -51,6 +51,14 @@ export const InfoLine = styled.div`
     height: 1px;
     background: #D9D9D9;
 `
+
+export const TextGroup = styled.div`
+
+`
+
+export const BeforeContent = styled.div`
+`
+
 export const SubmitBtn = styled.button`
     width: 250px;
     height: 60px;
@@ -68,5 +76,10 @@ export const SubmitBtn = styled.button`
     border: none;   
     outline: none;  
     margin: 0 auto; 
-    margin-top: 190px;
+    margin-top: 10%;
+    @media (min-height: 700px) {
+        margin-top: 25%;
+    }
+
 `;
+

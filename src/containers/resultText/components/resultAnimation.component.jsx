@@ -20,8 +20,8 @@ const ResultAnimation = ({ onComplete }) => {
 
     return (
         isVisible && (
-            <S.Group isVisible={isVisible}>
-                <C.PageTitle>홍보글 확인하기</C.PageTitle>
+            <C.MainSection isVisible={isVisible}>
+                <C.ResultTitle>홍보글 확인하기</C.ResultTitle>
                 <S.Motion>
                     <S.DocumentBack src="/documentBack.png"></S.DocumentBack>
                     <S.DocumentPaper animate={isAnimated} src="/documentPaper.png"></S.DocumentPaper>
@@ -31,7 +31,7 @@ const ResultAnimation = ({ onComplete }) => {
                     <C.Content>결과를 확인해주세요.</C.Content>
                     <C.Script style={{ marginTop: "30px" }}>봉투를 눌러 영남이의 홍보글을 열어보세요!</C.Script>
                 </C.ContentGroup>
-            </S.Group>
+            </C.MainSection>
         )
 
     )
