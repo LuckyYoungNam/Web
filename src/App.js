@@ -33,7 +33,6 @@ function App() {
 
   return (
     <div>
-      <PWAInstallPrompt /> {/* PWA 설치 버튼 */}
       <PageRoutes />
     </div>
   );
