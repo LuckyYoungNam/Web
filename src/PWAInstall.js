@@ -1,7 +1,7 @@
 // PWAInstallPrompt.js
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap'; // 부트스트랩의 버튼 컴포넌트
-
+import { RiInstallLine } from 'react-icons/ri'; // 정확한 경로에서 가져오기
 const PWAInstallPrompt = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
