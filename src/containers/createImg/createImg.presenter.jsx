@@ -5,10 +5,8 @@ const CreateImgUI = ({ image, handleImageUpload, region, keywords, handleAddText
     goToHome, imageRef, colors,
     onKeywordsSelect,closeModal,handleReset
 }) => {
-    const userData = {
-        region: "인천",
-        name: "도훈이네 식당"
-    }
+    
+    const userData = localStorage.getItem('userdata');
     return (
         <S.Wrapper>
             <S.BannerGroup>
@@ -61,8 +59,8 @@ const CreateImgUI = ({ image, handleImageUpload, region, keywords, handleAddText
                             <S.UploadedImage ref={imageRef} src={image} alt="Uploaded" />
                             {isClick && (
                                 <S.TextOverlay>
-                                    <S.RegionText style={{color:"black"}}>{userData.region} 맛집</S.RegionText>
-                                    <S.RegionText regionTextColor={colors.regionTextColor}>{userData.name}</S.RegionText>
+                                    <S.RegionText style={{color:"black"}}>{userData.location} 맛집</S.RegionText>
+                                    <S.RegionText regionTextColor={colors.regionTextColor}>{userData.businessName}</S.RegionText>
                                     <S.KeywordText keywordTextColor={colors.keywordTextColor}>
                                         {keywords.map((keyword, index) => (
                                             <span key={index}>{keyword} </span>

@@ -12,7 +12,7 @@ const MainUI = () => {
     // 모달 열고 닫기 함수
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
-
+    const userData = localStorage.getItem('userdata');
     return (
         <S.Wrapper>
             <S.Title>홍보사원, 영남이</S.Title>
@@ -36,7 +36,8 @@ const MainUI = () => {
             </S.MenuWrapper>
             
             {/* 모달 컴포넌트에 열림 상태와 닫기 함수 전달 */}
-            <MainModal isOpen={true} closeModal={closeModal} />
+            {/*사용자 정보 입력 여부에 따른 모달 동작 여부*/}
+            <MainModal isOpen={(!userData.location || !userData.businessName || !userData.address)?true:false} closeModal={closeModal} />
         </S.Wrapper>
     );
 };
