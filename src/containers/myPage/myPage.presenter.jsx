@@ -65,7 +65,7 @@ const MyPageUI = ({ closeModal }) => {
         // 페이지 변경 함수
         const postData = async () => {
             try {
-                const response = await axios.post(`${BACKEND_URL}/users/info`, {
+                const response = await axios.patch(`${BACKEND_URL}/users/info`, {
                     businessName,
                     location,
                     address
