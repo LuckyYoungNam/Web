@@ -3,17 +3,19 @@ import * as S from "./myPage.style";
 import * as C from "../createText/createText.style";
 import useStore from "../../store/useStore";
 import axios from 'axios';
-const MyPageUI = ({closeModal}) => {
+
+const MyPageUI = ({ closeModal }) => {
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
     const { goToHome } = useStore();
-    const userData = localStorage.getItem('userdata')
+    const userData = JSON.parse(localStorage.getItem('userdata')) || {};
 
     const [posts, setPosts] = useState([]);
-    const [page, setPage] = useState(0); // 현재 페이지 상태
-    const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
-    const [businessName, setBusinessName] = useState("");
-    const [location, setLocation] = useState("");
-    const [address, setAddress] = useState("");
+    const [page, setPage] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
+    const [businessName, setBusinessName] = useState(userData.businessName || "");
+    const [location, setLocation] = useState(userData.location || "");
+    const [address, setAddress] = useState(userData.address || "");
+
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -33,7 +35,7 @@ const MyPageUI = ({closeModal}) => {
 
                 if (response.ok) {
                     const data = await response.json();
-                    const sortedPosts = data.content.sort((a, b) => new Date(b.postDate) - new Date(a.postDate)); // 최신순 정렬
+                    const sortedPosts = data.content.sort((a, b) => new Date(b.postDate) - new Date(a.postDate));
                     setPosts(sortedPosts);
                     setTotalPages(data.totalPages);
                 } else {
@@ -47,47 +49,45 @@ const MyPageUI = ({closeModal}) => {
         fetchPosts();
     }, [BACKEND_URL, page]);
 
-         // 날짜 형식 파싱
-         const formatDate = (dateString) => {
-            const date = new Date(dateString);
-            const options = { month: 'numeric', day: 'numeric', weekday: 'short', hour: 'numeric', minute: 'numeric' };
-            return `${date.getMonth() + 1}월 ${date.getDate()}일 (${date.toLocaleDateString('ko-KR', { weekday: 'short' })}) ${date.getHours()}시 ${date.getMinutes()}분`;
-        };
-    
-        const handlePageChange = (newPage) => {
-            if (newPage >= 0 && newPage < totalPages) {
-                setPage(newPage);
-            }
-        };
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return `${date.getMonth() + 1}월 ${date.getDate()}일 (${date.toLocaleDateString('ko-KR', { weekday: 'short' })}) ${date.getHours()}시 ${date.getMinutes()}분`;
+    };
+
+    const handlePageChange = (newPage) => {
+        if (newPage >= 0 && newPage < totalPages) {
+            setPage(newPage);
+        }
+    };
+
     const handleSubmit = () => {
         closeModal();
-    // 페이지 변경 함수
         const postData = async () => {
             try {
-              const response = await axios.post(`${BACKEND_URL}/users/info`, {
+                const response = await axios.post(`${BACKEND_URL}/users/info`, {
                     businessName,
                     location,
                     address
-              }, {
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                }
-              });
-              console.log(response.data);
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                console.log(response.data);
             } catch (error) {
-              console.error('Error:', error.response ? error.response.data : error.message);
+                console.error('Error:', error.response ? error.response.data : error.message);
             }
-          };
-          postData();
-         
-    }
+        };
+        postData();
+    };
+
     return (
         <C.Wrapper>
             <C.Header>
                 <C.MenuIcon src="/menu.png" onClick={goToHome}></C.MenuIcon>
                 <C.Logo>홍보사원, 영남이</C.Logo>
-            </C.Header> 
+            </C.Header>
             <S.MainSection>
                 <S.PageTitle>마이페이지</S.PageTitle>
                 <S.SubGroup>
@@ -96,41 +96,40 @@ const MyPageUI = ({closeModal}) => {
                         <S.InfoText>상호명</S.InfoText>
                         <S.InfoEditGroup>
                             <S.InfoWrite 
-                            placeholder="상호명을 입력하세요" 
-                            value={userData.businessName} 
-                            onChange={(e) => setBusinessName(e.target.value)} 
+                                placeholder="상호명을 입력하세요" 
+                                value={businessName} 
+                                onChange={(e) => setBusinessName(e.target.value)} 
                             />
                             <S.InfoLine></S.InfoLine>
-                        </S.InfoEditGroup>      
+                        </S.InfoEditGroup>
                     </S.InfoGroup>
                     <S.InfoGroup>
                         <S.InfoText>지역</S.InfoText>
                         <S.InfoEditGroup>
                             <S.InfoWrite 
-                            placeholder="지역 정보를 입력하세요" 
-                            value={userData.location} 
-                            onChange={(e) => setLocation(e.target.value)} 
+                                placeholder="지역 정보를 입력하세요" 
+                                value={location} 
+                                onChange={(e) => setLocation(e.target.value)} 
                             />
                             <S.InfoLine></S.InfoLine>
-                        </S.InfoEditGroup>      
+                        </S.InfoEditGroup>
                     </S.InfoGroup>
                     <S.InfoGroup>
                         <S.InfoText>주소</S.InfoText>
                         <S.InfoEditGroup>
                             <S.InfoWrite 
-                            placeholder="주소를 입력하세요" 
-                            value={userData.address} 
-                            onChange={(e) => setAddress(e.target.value)} 
+                                placeholder="주소를 입력하세요" 
+                                value={address} 
+                                onChange={(e) => setAddress(e.target.value)} 
                             />
                             <S.InfoLine></S.InfoLine>
-                        </S.InfoEditGroup>      
+                        </S.InfoEditGroup>
                     </S.InfoGroup>
                     <S.UpdateBtn onClick={handleSubmit}>저장하기</S.UpdateBtn>
-                    </S.SubGroup>
+                </S.SubGroup>
                 <S.SubGroup>
                     <S.SubTitle>이전 홍보글 확인하기</S.SubTitle>
                     <S.TextGroup>
-                        {/* 최신순으로 정렬 */}
                         {posts.map((post) => (
                             <S.BeforeContent 
                                 key={post.postId}
@@ -158,4 +157,5 @@ const MyPageUI = ({closeModal}) => {
         </C.Wrapper>
     );
 };
+
 export default MyPageUI;

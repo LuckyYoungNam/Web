@@ -47,7 +47,7 @@ const MainModal = ({ isOpen, closeModal }) => {
                 }
             });
             console.log(response.data); // 응답 데이터 출력
-            localStorage.setItem('userdata', response.data)
+            localStorage.setItem('userdata', JSON.stringify(response.data));
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
         }
