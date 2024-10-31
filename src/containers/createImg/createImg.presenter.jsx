@@ -44,7 +44,11 @@ const CreateImgUI = ({ image, handleImageUpload, region, keywords, handleAddText
                                         marginRight: '-50%',
                                         transform: 'translate(-50%, -50%)',
                                         zIndex: 101,
-                                        borderRadius: "20px"
+                                        borderRadius: "20px",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        justifyContent: "center",
+                                        alignItems: "center"
                                     },
                                 }}
                                 onClick={(e) => e.stopPropagation()} // 이벤트 전파 중지

@@ -12,8 +12,10 @@ const PhraseSelecetUI = ({ keywordGroups, selectedKeywords, toggleKeyword, handl
                                 key={keyword}
                                 onClick={() => toggleKeyword(keyword)}
                                 style={{
-                                    backgroundColor: selectedKeywords.includes(keyword) ? "#496BEA" : "white",
-                                    color: selectedKeywords.includes(keyword) ? "white" : "black",
+                                    backgroundColor: selectedKeywords.includes(keyword) ? "#D8ECFF" : "white",
+                                    color: selectedKeywords.includes(keyword) ? "black" : "silver",
+                                    fontWeight: selectedKeywords.includes(keyword) ? "700" : "500",
+                                    border: selectedKeywords.includes(keyword) ? "2px solid #496BEA" : "none",
                                 }}
                             >
                                 {keyword}

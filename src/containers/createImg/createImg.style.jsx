@@ -8,12 +8,12 @@ export const Wrapper = styled.div`
     justify-content: flex-start;
     @media (max-width: 500px) {
         width: 100vw;
-        height: 100vh;
+        height: 900px;
     }
     @media (min-width: 500px) {
         width: 500px;
         height: 900px;
-    } 
+    }
 `
 export const BannerGroup = styled.div`
     width: 100%;
@@ -138,7 +138,7 @@ export const RegionText = styled.div`
 `;
 
 export const KeywordText = styled.div`
-    font-size: 22px;
+    font-size: 18px;
     margin-top: 10px;
     font-weight: bold;
     stroke: black;
@@ -147,6 +147,9 @@ export const KeywordText = styled.div`
 
 export const TextOverlay = styled.div`
     position: absolute;
-    top: 340px;
+    top: 320px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
