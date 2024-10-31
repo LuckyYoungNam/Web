@@ -116,3 +116,95 @@ export const ArrowIcon = styled.img`
     width: 10%;
     height: auto;
 `
+
+
+// modal
+
+
+// export const Modal = styled.div`
+//     // position: absolute;
+//     // display: flex;
+//     // flex-direction: column;
+//     // align-items: center;
+//     // position: fixed;
+//     // top: 0;
+//     // right: 0;
+//     // bottom: 0;
+//     // left: 0;
+//     // z-index: 10;
+//     // background-color: rgba(0, 0, 0, 0.6);
+// `;
+
+export const ModalContent = styled.div`
+    // width: 85%;
+    // height: auto;
+    // background: #ffffff;
+    // margin-top: 72%;
+    // border-radius: 10px;
+    // padding: 20px;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    // align-items: start;
+    
+`;
+
+export const ModalTitle = styled.div`
+    color: black;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 15%;
+`;
+
+export const ModalGroup = styled.div`
+    display: flex;
+    margin-bottom: 5%;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+`
+
+export const ModalInputGroup = styled.div`
+    margin-right: 5%;
+
+`;
+
+export const ModalInfo = styled.div`
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Pretendard";
+    color: #7B7B7B;
+`
+
+export const ModelInput = styled.input`
+    width: 200px;
+    height: 90%;
+    bottom: 0;
+    border: none;   
+    outline: none;  
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Pretendard";
+`;
+
+export const InputLine = styled.div`
+    padding: 0;
+    width: 100%;
+    height: 1px;
+    background: #D9D9D9;
+`;
+
+export const SubmitBtn = styled.button`
+    padding: 12px 25px 12px 25px;
+    background: #496BEA;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700; 
+    font-family: "Pretendard";
+    border: none;   
+    outline: none;  
+    border-radius: 10px;
+    align-self: center;
+    margin-top: 10%;
+`;
