@@ -1,6 +1,5 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import React, { useEffect } from 'react';
 import PageRoutes from './routes/pageroutes.jsx';
 import { BrowserRouter as Router, useNavigate } from 'react-router-dom';
 import useStore from './store/useStore.jsx';
@@ -9,17 +8,16 @@ import useCheckAddToHomeAvailable from './useCheckAddToHomeAvailable.js';
 function App() {
   const setNavigate = useStore((state) => state.setNavigate);
   const navigate = useNavigate();
-  const deferredPrompt = useCheckAddToHomeAvailable();
+  const [deferredPrompt, setDeferredPrompt] = useState(null); // useState로 상태 정의
+  const checkAddToHomePrompt = useCheckAddToHomeAvailable();
 
-  // Navigate 함수를 zustand 스토어에 전달
   useEffect(() => {
-    setNavigate(navigate);
+    setNavigate(navigate); // zustand 스토어에 navigate 함수 전달
   }, [navigate, setNavigate]);
 
-  // 화면 크기를 설정하는 함수
   function setScreenSize() {
     let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
   }
 
   useEffect(() => {
@@ -31,24 +29,30 @@ function App() {
     };
   }, []);
 
-  // PWA 설치를 위한 함수
+  useEffect(() => {
+    // useCheckAddToHomeAvailable에서 전달된 이벤트를 상태로 설정
+    if (checkAddToHomePrompt) {
+      setDeferredPrompt(checkAddToHomePrompt);
+    }
+  }, [checkAddToHomePrompt]);
+
   const installApp = async () => {
     if (!deferredPrompt) return;
 
-    deferredPrompt.prompt(); // 설치 프롬프트 표시
+    deferredPrompt.prompt(); // Show the install prompt
     const { outcome } = await deferredPrompt.userChoice;
 
     if (outcome === 'accepted') {
       console.log('PWA 설치가 완료되었습니다.');
-      clearPrompt();
+      clearPrompt(); // Clear the prompt
     } else {
       console.log('PWA 설치가 취소되었습니다.');
     }
   };
 
-  // 설치 프롬프트를 초기화하는 함수
+  // Clear the deferred prompt
   const clearPrompt = () => {
-    setDeferredPrompt(null); // 수정: setDeferredPrompt가 아니라 useCheckAddToHomeAvailable의 상태 관리
+    setDeferredPrompt(null);
   };
 
   return (
