@@ -12,7 +12,7 @@ const MainUI = () => {
     // 모달 열고 닫기 함수
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
-    const userData = localStorage.getItem('userdata');
+    const userData = JSON.parse(localStorage.getItem('userdata')) || {};
     return (
         <S.Wrapper>
             <S.Title>홍보사원, 영남이</S.Title>

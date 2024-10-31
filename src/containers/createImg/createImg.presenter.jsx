@@ -6,7 +6,7 @@ const CreateImgUI = ({ image, handleImageUpload, region, keywords, handleAddText
     onKeywordsSelect,closeModal,handleReset
 }) => {
     
-    const userData = localStorage.getItem('userdata');
+    const userData = JSON.parse(localStorage.getItem('userdata')) || {};
     return (
         <S.Wrapper>
             <S.BannerGroup>

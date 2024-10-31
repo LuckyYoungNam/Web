@@ -6,10 +6,11 @@ import TextDetail from './textDetail.component';
 
 const MyPageUI = () => {
 import axios from 'axios';
-const MyPageUI = ({closeModal}) => {
+
+const MyPageUI = ({ closeModal }) => {
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
     const { goToHome } = useStore();
-
+    const userData = JSON.parse(localStorage.getItem('userdata')) || {};
     const [posts, setPosts] = useState([]);
     const [page, setPage] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
@@ -26,6 +27,9 @@ const MyPageUI = ({closeModal}) => {
     const [businessName, setBusinessName] = useState("");
     const [location, setLocation] = useState("");
     const [address, setAddress] = useState("");
+    const [businessName, setBusinessName] = useState(userData.businessName || "");
+    const [location, setLocation] = useState(userData.location || "");
+    const [address, setAddress] = useState(userData.address || "");
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -53,7 +57,6 @@ const MyPageUI = ({closeModal}) => {
 
         fetchPosts();
     }, [BACKEND_URL, page]);
-
     // 모달 
     const openModal = (postId) => {
         setSelectedPostId(postId);
@@ -77,29 +80,38 @@ const MyPageUI = ({closeModal}) => {
                 setPage(newPage);
             }
         };
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return `${date.getMonth() + 1}월 ${date.getDate()}일 (${date.toLocaleDateString('ko-KR', { weekday: 'short' })}) ${date.getHours()}시 ${date.getMinutes()}분`;
+    };
+
+    const handlePageChange = (newPage) => {
+        if (newPage >= 0 && newPage < totalPages) {
+            setPage(newPage);
+        }
+    };
     const handleSubmit = () => {
         closeModal();
-    // 페이지 변경 함수
         const postData = async () => {
             try {
-              const response = await axios.post(`${BACKEND_URL}/users/info`, {
+                const response = await axios.post(`${BACKEND_URL}/users/info`, {
                     businessName,
                     location,
                     address
-              }, {
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                }
-              });
-              console.log(response.data);
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                console.log(response.data);
             } catch (error) {
-              console.error('Error:', error.response ? error.response.data : error.message);
+                console.error('Error:', error.response ? error.response.data : error.message);
             }
-          };
-          postData();
-         
-    }
+        };
+        postData();
+    };
+
     return (
         <C.Wrapper>
             <C.Header>
@@ -108,6 +120,43 @@ const MyPageUI = ({closeModal}) => {
             </C.Header>
             <S.MainSection>
                 <S.PageTitle>마이페이지</S.PageTitle>
+                <S.SubGroup>
+                    <S.SubTitle>회원 정보 수정</S.SubTitle>
+                    <S.InfoGroup>
+                        <S.InfoText>상호명</S.InfoText>
+                        <S.InfoEditGroup>
+                            <S.InfoWrite 
+                                placeholder="상호명을 입력하세요" 
+                                value={businessName} 
+                                onChange={(e) => setBusinessName(e.target.value)} 
+                            />
+                            <S.InfoLine></S.InfoLine>
+                        </S.InfoEditGroup>
+                    </S.InfoGroup>
+                    <S.InfoGroup>
+                        <S.InfoText>지역</S.InfoText>
+                        <S.InfoEditGroup>
+                            <S.InfoWrite 
+                                placeholder="지역 정보를 입력하세요" 
+                                value={location} 
+                                onChange={(e) => setLocation(e.target.value)} 
+                            />
+                            <S.InfoLine></S.InfoLine>
+                        </S.InfoEditGroup>
+                    </S.InfoGroup>
+                    <S.InfoGroup>
+                        <S.InfoText>주소</S.InfoText>
+                        <S.InfoEditGroup>
+                            <S.InfoWrite 
+                                placeholder="주소를 입력하세요" 
+                                value={address} 
+                                onChange={(e) => setAddress(e.target.value)} 
+                            />
+                            <S.InfoLine></S.InfoLine>
+                        </S.InfoEditGroup>
+                    </S.InfoGroup>
+                    <S.UpdateBtn onClick={handleSubmit}>저장하기</S.UpdateBtn>
+                </S.SubGroup>
                 <S.SubGroup>
                     <S.SubTitle>이전 홍보글 확인하기</S.SubTitle>
                     <S.TextGroup>
