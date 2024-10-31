@@ -23,7 +23,7 @@ export const PageTitle = styled.div`
     font-size: 20px;
     color: black;
     font-weight: 700;
-    margin-top: 12%;
+    margin-top: 5%;
     font-family: "Pretendard";
 `
 
@@ -45,12 +45,15 @@ export const SubTitle = styled.div`
     text-align: left;
     align-self: flex-start;
     margin-bottom: 20px;
-    margin-top: 15%;
+    margin-top: 10%;
 `;
 
 export const InfoGroup = styled.div`
-    margin-top: 10px;
-    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between; /* 가로 양 끝에 배치 */
+    align-items: center; /* 수직 가운데 정렬 */
+    width: 100%; /* 부모 요소 너비를 차지하도록 설정 */
 `
 
 export const InfoText = styled.div`
@@ -58,25 +61,22 @@ export const InfoText = styled.div`
     color: black;
     font-weight: 700;
     font-family: "Pretendard";
+    width: auto;
 `;
 
 export const InfoEditGroup = styled.div`
     display: flex;
-    flex-direction: row;
-    align-items: center; 
-    justify-content: space-btween; 
+    flex-direction: column;
 
 `;
 
 export const InfoWrite = styled.input`
     position: relative;
-    margin-top: 10px;
-    padding-top: 10px;
     margin-bottom:5px;
     bottom: 0;
     border: none;   
     outline: none;  
-    width: 330px;
+    width: 250px;
     height: 30px;            
     box-sizing: border-box;
     font-size: 14px;
@@ -86,21 +86,29 @@ export const InfoWrite = styled.input`
 
 export const InfoLine = styled.div`
     padding: 0;
-    width: 70%;
+    width: 90%;
     height: 1px;
     background: #D9D9D9;
 `
 
 export const UpdateBtn = styled.button`
-    padding: 5px 10px 5px 10px;
-    background: #D9D9D9;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    background: #496BEA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 700;
+    font-family: "Pretendard";
     border: none;   
     outline: none;  
-    color: #ffffff;
-    border-radius: 3px;
-    width: 50px;
-    font-weight: 500;
-    font-family: "Pretendard";
+    margin: 0 auto; 
+    margin-top: 10%;
 `;
 
 export const TextGroup = styled.div`

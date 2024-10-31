@@ -1,30 +1,24 @@
 import * as S from "../createText/createText.style";
 import ResultAnimation from "./components/resultAnimation.component";
 import ResultDisplay from "./components/resultDisplay.component";
-import React, { useState } from 'react';
-import useStore from "../../store/useStore";
+import React from 'react';
 
-
-
-const ResultTextUI = () => {
-    const { goToHome } = useStore();
-    const [showDisplay, setShowDisplay] = useState(true); // false로 고치기
-
-    const displayState = () => {
-        setShowDisplay(true);
-    };
-
+const ResultTextUI = ({ goToHome, showDisplay, displayState, submitText }) => {
     return (
         <S.Wrapper>
             <S.Header>
-                <S.MenuIcon src="/menu.png"onClick={ goToHome } ></S.MenuIcon>
+                <S.MenuIcon src="/menu.png" onClick={goToHome} />
                 <S.Logo>홍보사원, 영남이</S.Logo>
             </S.Header> 
-            {!showDisplay && <ResultAnimation onComplete={displayState} />}
+            {!showDisplay && (
+                <ResultAnimation 
+                    onComplete={displayState} 
+                    submitText={submitText} 
+                />
+            )}
             {showDisplay && <ResultDisplay />}
         </S.Wrapper>
-
-    )
-}
+    );
+};
 
 export default ResultTextUI;

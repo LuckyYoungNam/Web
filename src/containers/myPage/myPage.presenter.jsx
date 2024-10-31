@@ -79,22 +79,50 @@ const MyPageUI = () => {
             <S.MainSection>
                 <S.PageTitle>마이페이지</S.PageTitle>
                 <S.SubGroup>
-                    <S.SubTitle>회원 정보를<br/>수정해 주세요.</S.SubTitle>
+                    <S.SubTitle>회원 정보 수정</S.SubTitle>
                     <S.InfoGroup>
-                        <S.InfoText>네이버 블로그 아이디</S.InfoText>
+                        <S.InfoText>상호명</S.InfoText>
                         <S.InfoEditGroup>
                             <S.InfoWrite 
-                                placeholder="아이디를 입력하세요" 
-                                value={blogId} 
-                                onChange={(e) => setBlogId(e.target.value)} 
+                            placeholder="상호명을 입력하세요" 
+                            value={blogId} 
+                            onChange={(e) => setBlogId(e.target.value)} 
                             />
-                            <S.UpdateBtn onClick={updateBlogId}>저장</S.UpdateBtn>
-                        </S.InfoEditGroup>
-                        <S.InfoLine></S.InfoLine>
+                            <S.InfoLine></S.InfoLine>
+                        </S.InfoEditGroup>      
                     </S.InfoGroup>
-                    <S.SubTitle>이전에 생성한 <br/>홍보글 확인하기</S.SubTitle>
+                    <S.InfoGroup>
+                        <S.InfoText>지역</S.InfoText>
+                        <S.InfoEditGroup>
+                            <S.InfoWrite 
+                            placeholder="지역 정보를 입력하세요" 
+                            value={blogId} 
+                            onChange={(e) => setBlogId(e.target.value)} 
+                            />
+                            <S.InfoLine></S.InfoLine>
+                        </S.InfoEditGroup>      
+                    </S.InfoGroup>
+                    <S.InfoGroup>
+                        <S.InfoText>주소</S.InfoText>
+                        <S.InfoEditGroup>
+                            <S.InfoWrite 
+                            placeholder="주소를 입력하세요" 
+                            value={blogId} 
+                            onChange={(e) => setBlogId(e.target.value)} 
+                            />
+                            <S.InfoLine></S.InfoLine>
+                        </S.InfoEditGroup>      
+                    </S.InfoGroup>
+                    <S.UpdateBtn>저장하기</S.UpdateBtn>
+                    <S.SubTitle>이전 홍보글 확인하기</S.SubTitle>
                     <S.TextGroup>
-                        <S.BeforeContent>아아아</S.BeforeContent>
+                        <S.BeforeContent>디자인 보려고 넣어둠</S.BeforeContent>
+                        <S.BeforeContent>디자인 보려고 넣어둠</S.BeforeContent>
+                        <S.BeforeContent>디자인 보려고 넣어둠</S.BeforeContent>
+                        <S.BeforeContent>디자인 보려고 넣어둠</S.BeforeContent>
+                        <S.BeforeContent>디자인 보려고 넣어둠</S.BeforeContent>
+                        <S.BeforeContent>디자인 보려고 넣어둠</S.BeforeContent>
+                        <S.BeforeContent>디자인 보려고 넣어둠</S.BeforeContent>
                     </S.TextGroup>
                 </S.SubGroup>
             </S.MainSection>
