@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import PageRoutes from './routes/pageroutes.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, useNavigate } from 'react-router-dom';
 import useStore from './store/useStore.jsx';
 import PWAInstallPrompt from './PWAInstall.js';
