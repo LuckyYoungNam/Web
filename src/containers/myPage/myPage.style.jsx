@@ -16,7 +16,7 @@ export const MainSection = styled.div`
         width: 100%;
         height: 90%;
     }
-    overflow: hidden; 
+    overflow: auto; 
 `;
 
 export const PageTitle = styled.div`
@@ -34,7 +34,7 @@ export const SubGroup = styled.div`
     flex-direction: column;
     align-items: center; 
     justify-content: flex-start; 
-    padding: 0 5% 0 5%;
+    padding: 3% 5% 0 5%;
 `;
 
 export const SubTitle = styled.div`
@@ -92,10 +92,10 @@ export const InfoLine = styled.div`
 `
 
 export const UpdateBtn = styled.button`
-    width: 200px;
-    height: 50px;
+    width: 150px;
+    height: 40px;
     border-radius: 10px;
-    background: #496BEA;
+    background: #D9D9D9;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,28 +107,41 @@ export const UpdateBtn = styled.button`
     font-family: "Pretendard";
     border: none;   
     outline: none;  
-    margin: 0 auto; 
-    margin-top: 10%;
+    margin-top: 5%;
+    margin-right: 5%;
+    margin-left: auto;
 `;
 
 export const TextGroup = styled.div`
     width: 100%; /* 원하는 너비 */
-    max-height: 30vh; 
+    min-height: 24vh; 
     overflow-y: auto; 
     box-sizing: border-box;
-    padding: 5% 0 5% 0;
+    padding: 1% 0 5% 0;
     // background: gray;
 
 `
 
 export const BeforeContent = styled.div`
-    padding: 30px 10px 30px 10px;
+    padding: 20px 10px 20px 10px;
     background: #ffffff;
     border-radius: 10px;
-    margin: 10px 3px 0 3px;
+    margin: 0 3px 5px 3px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+    font-family: "Pretendard";
 
 `
 
+export const Pagination = styled.div`
+    margin-top: 5%;
+`
+
+export const PaginationBtn = styled.button`
+    margin: 10px;
+    outline: none;  
+    border: none;
+    background: none;
+`
 
 
