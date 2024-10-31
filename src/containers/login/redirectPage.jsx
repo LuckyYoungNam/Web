@@ -2,14 +2,14 @@ import axios from "axios"
 import React, { useEffect } from 'react';
 const RedirectPage = () => {
     const code = new URL(document.location.toString()).searchParams.get('code');
-    console.log(code);
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
     useEffect(() => {
         const getToken = async () => {
             try {
                 const response = await axios.post(
-                    'http://3.39.4.132/login',
+                    `${BACKEND_URL}/users/login`,
                     {
-                        code: code  // 요청 본문에 인증 코드 추가
+                        code: code  //인가코드 전달
                     },
                     {
                         headers: {
