@@ -3,7 +3,7 @@
   "short_name": "영남이", 
   "icons": [
     {
-      "src": "characterFace.png",
+      "src": "pwaIcon.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
