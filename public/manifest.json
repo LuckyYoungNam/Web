@@ -9,7 +9,7 @@
       "purpose": "any"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "https://inuluckyyoungnam.vercel.app",
   "display": "fullscreen",
   "theme_color": "#111111",
   "background_color": "#ffffff"
