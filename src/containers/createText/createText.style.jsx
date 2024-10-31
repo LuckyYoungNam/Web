@@ -7,11 +7,9 @@ export const Wrapper = styled.div`
     background: #496BEA;
     position: relative; /* Logo를 가운데 배치하기 위한 기준점 설정 */
     display: flex;
-    justify-content: flex-start;
-    @media (min-width: 820px) {
-        width: 50vw;
-        height: 100vh;
-    }
+    justify-content: center;
+    align-items: center;
+
 `
 
 export const Header = styled.div`
@@ -73,7 +71,6 @@ export const PageTitle = styled.div`
     font-weight: 700;
     margin-top: 5%;
     font-family: "Pretendard";
-    
 `;
 
 export const createTextPad = styled.img`
@@ -96,7 +93,7 @@ export const TextArea = styled.textarea`
     position: absolute;
     background: transparent;
     top: 0;
-    margin-top: 150px;
+    margin-top: 43%;
     padding: 20px;
     
 `;
@@ -114,8 +111,6 @@ export const NextBtn = styled.div`
     margin-left: 180px;    
 `;
 
-// export const ContentGroup = styled.div`
-// `
 
 export const Content = styled.div`
     vertical-align: bottom;

@@ -8,7 +8,7 @@ import useStore from "../../store/useStore";
 
 const ResultTextUI = () => {
     const { goToHome } = useStore();
-    const [showDisplay, setShowDisplay] = useState(false);
+    const [showDisplay, setShowDisplay] = useState(true); // false로 고치기
 
     const displayState = () => {
         setShowDisplay(true);

@@ -62,7 +62,7 @@ export const resultImg = styled.img`
     
 `;
 
-export const resultContent = styled.div`
+export const resultContent = styled.textarea`
     border: 3px solid #D8ECFF;
     border-radius: 7px;
     width: 330px;
