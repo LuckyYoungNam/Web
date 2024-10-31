@@ -1,26 +1,19 @@
 import styled from "@emotion/styled"
-const getRandomColor = () => {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
 export const Wrapper = styled.div`
-    width: 100vw;
-    height: calc(var(--vh, 1vh) * 100);
+    width: 800px;
+    height: 900px;
     background: #496BEA;
     position: relative; /* Logo를 가운데 배치하기 위한 기준점 설정 */
     display: flex;
     justify-content: flex-start;
-    @media (min-width: 820px) {
-        width: 50vw;
+    @media (max-width: 500px) {
+        width: 100vw;
         height: 100vh;
     }
-    @media (max-width: 820px) {
-        width: 100vw;
-    }
+    @media (min-width: 500px) {
+        width: 500px;
+        height: 900px;
+    } 
 `
 export const BannerGroup = styled.div`
     width: 100%;
@@ -30,8 +23,8 @@ export const BannerGroup = styled.div`
     margin-top: 20px;
 `;
 export const HomeIcon = styled.img`
-    width: 10vw;
-    height: 4vh;
+    width: 40px;
+    height: 40px;
     margin-top: 5px;
     position: absolute;
     left: 20px; /* HomeIcon을 왼쪽에 고정 */
@@ -58,10 +51,6 @@ export const ContentWrapper = styled.div`
     bottom: 0;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
-    @media (min-width: 820px) {
-        width: 100%;
-        height: 90%;
-    }
     gap: 50px;
 `
 export const ImageWrapper = styled.div`
@@ -94,13 +83,10 @@ export const ButtonGroup = styled.div`
     align-items: center;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 3vh;
+    margin-bottom: 30px;
     position: relative;
-    z-index:33;
-    min-height: 10vh; /* 최소 높이 설정 */
-    @media (min-width: 820px) {
-        min-height: 20vh; /* 더 큰 화면에서는 큰 높이를 부여 */
-    }
+    z-index:auto;
+    min-height: 100px;
 `;
 export const Label = styled.div`
     font-size: 18px;
@@ -115,8 +101,8 @@ export const Description = styled.div`
 `;
 
 export const AddBtn = styled.button`
-    width: 80%;
-    height: 7vh;
+    width: 300px;
+    height: 50px;
     background: #496BEA;
     font-family: "Pretendard";
     color: white;
@@ -129,8 +115,8 @@ export const AddBtn = styled.button`
     align-items: center;
     padding: 10px 30px
     @media (min-width: 820px) {
-        width: 20vw;
-        height: 50vh;
+        width: 300px;
+        height: 50px;
     }
 `;
 
@@ -148,40 +134,19 @@ export const HiddenInput = styled.input`
 export const RegionText = styled.div`
     font-size: 40px;
     font-weight: bold;
-    color: ${getRandomColor()};
+    color: ${(props) => props.regionTextColor};
 `;
 
 export const KeywordText = styled.div`
     font-size: 22px;
     margin-top: 10px;
     font-weight: bold;
-    color: ${getRandomColor()};
+    stroke: black;
+    color: ${(props) => props.keywordTextColor};
 `;
+
 export const TextOverlay = styled.div`
     position: absolute;
-    top: 40vh;
+    top: 340px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-`;
-export const SaveBtn = styled.button`
-    background-color: #4CAF50; /* 녹색 배경 */
-    color: white; /* 흰색 텍스트 */
-    padding: 10px 20px; /* 버튼의 패딩 */
-    font-size: 16px; /* 텍스트 크기 */
-    border: none; /* 테두리 제거 */
-    border-radius: 5px; /* 약간의 둥근 모서리 */
-    cursor: pointer; /* 마우스 커서 변경 */
-    transition: background-color 0.3s ease; /* 배경색 전환 효과 */
-
-    &:hover {
-        background-color: #45a049; /* 호버 시 배경색 변경 */
-    }
-
-    &:active {
-        background-color: #3e8e41; /* 클릭 시 배경색 변경 */
-    }
-
-    &:disabled {
-        background-color: #ccc; /* 비활성화 시 배경색 변경 */
-        cursor: not-allowed; /* 비활성화 시 커서 변경 */
-    }
 `;
