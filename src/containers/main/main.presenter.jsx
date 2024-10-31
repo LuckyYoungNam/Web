@@ -36,7 +36,7 @@ const MainUI = () => {
             </S.MenuWrapper>
             
             {/* 모달 컴포넌트에 열림 상태와 닫기 함수 전달 */}
-            <MainModal isOpen={isModalOpen} closeModal={closeModal} />
+            <MainModal isOpen={true} closeModal={closeModal} />
         </S.Wrapper>
     );
 };
