@@ -5,6 +5,8 @@ import useStore from "../../store/useStore";
 import TextDetail from './textDetail.component'; 
 
 const MyPageUI = () => {
+import axios from 'axios';
+const MyPageUI = ({closeModal}) => {
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
     const { goToHome } = useStore();
 
@@ -19,7 +21,11 @@ const MyPageUI = () => {
         const date = new Date(dateString);
         return `${date.getMonth() + 1}월 ${date.getDate()}일 (${date.toLocaleDateString('ko-KR', { weekday: 'short' })}) ${date.getHours()}시 ${date.getMinutes()}분`;
     };
-
+    const [page, setPage] = useState(0); // 현재 페이지 상태
+    const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
+    const [businessName, setBusinessName] = useState("");
+    const [location, setLocation] = useState("");
+    const [address, setAddress] = useState("");
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -59,6 +65,41 @@ const MyPageUI = () => {
         setSelectedPostId(null);
     };
 
+         // 날짜 형식 파싱
+         const formatDate = (dateString) => {
+            const date = new Date(dateString);
+            const options = { month: 'numeric', day: 'numeric', weekday: 'short', hour: 'numeric', minute: 'numeric' };
+            return `${date.getMonth() + 1}월 ${date.getDate()}일 (${date.toLocaleDateString('ko-KR', { weekday: 'short' })}) ${date.getHours()}시 ${date.getMinutes()}분`;
+        };
+    
+        const handlePageChange = (newPage) => {
+            if (newPage >= 0 && newPage < totalPages) {
+                setPage(newPage);
+            }
+        };
+    const handleSubmit = () => {
+        closeModal();
+    // 페이지 변경 함수
+        const postData = async () => {
+            try {
+              const response = await axios.post(`${BACKEND_URL}/users/info`, {
+                    businessName,
+                    location,
+                    address
+              }, {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+              });
+              console.log(response.data);
+            } catch (error) {
+              console.error('Error:', error.response ? error.response.data : error.message);
+            }
+          };
+          postData();
+         
+    }
     return (
         <C.Wrapper>
             <C.Header>
