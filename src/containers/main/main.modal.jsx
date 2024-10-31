@@ -22,7 +22,7 @@ const MainModal = ({ isOpen, closeModal }) => {
         closeModal();
         const postData = async () => {
             try {
-              const response = await axios.post('http://3.39.4.132/users/info', {
+              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/info`, {
                     businessName,
                     location,
                     address

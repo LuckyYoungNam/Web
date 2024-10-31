@@ -6,18 +6,22 @@ import useStore from "../../store/useStore";
 const MyPageUI = () => {
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
     const { goToHome } = useStore();
+    const userData = localStorage.getItem('userdata')
+
     const [posts, setPosts] = useState([]);
     const [page, setPage] = useState(0); // 현재 페이지 상태
     const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
-
-    // 날짜 형식 파싱
+    const [businessName, setBusinessName] = useState("");
+    const [location, setLocation] = useState("");
+    const [address, setAddress] = useState("");
+    const handleSubmit = () => {
+        closeModal();
+         // 날짜 형식 파싱
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const options = { month: 'numeric', day: 'numeric', weekday: 'short', hour: 'numeric', minute: 'numeric' };
         return `${date.getMonth() + 1}월 ${date.getDate()}일 (${date.toLocaleDateString('ko-KR', { weekday: 'short' })}) ${date.getHours()}시 ${date.getMinutes()}분`;
     };
-
-
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -58,6 +62,26 @@ const MyPageUI = () => {
         }
     };
 
+        const postData = async () => {
+            try {
+              const response = await axios.post(`${BACKEND_URL}/users/info`, {
+                    businessName,
+                    location,
+                    address
+              }, {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+              });
+              console.log(response.data);
+            } catch (error) {
+              console.error('Error:', error.response ? error.response.data : error.message);
+            }
+          };
+          postData();
+         
+    }
     return (
         <C.Wrapper>
             <C.Header>
@@ -71,26 +95,38 @@ const MyPageUI = () => {
                     <S.InfoGroup>
                         <S.InfoText>상호명</S.InfoText>
                         <S.InfoEditGroup>
-                            <S.InfoWrite placeholder="상호명을 입력하세요" />
+                            <S.InfoWrite 
+                            placeholder="상호명을 입력하세요" 
+                            value={userData.businessName} 
+                            onChange={(e) => setBusinessName(e.target.value)} 
+                            />
                             <S.InfoLine></S.InfoLine>
                         </S.InfoEditGroup>      
                     </S.InfoGroup>
                     <S.InfoGroup>
                         <S.InfoText>지역</S.InfoText>
                         <S.InfoEditGroup>
-                            <S.InfoWrite placeholder="지역 정보를 입력하세요" />
+                            <S.InfoWrite 
+                            placeholder="지역 정보를 입력하세요" 
+                            value={userData.location} 
+                            onChange={(e) => setLocation(e.target.value)} 
+                            />
                             <S.InfoLine></S.InfoLine>
                         </S.InfoEditGroup>      
                     </S.InfoGroup>
                     <S.InfoGroup>
                         <S.InfoText>주소</S.InfoText>
                         <S.InfoEditGroup>
-                            <S.InfoWrite placeholder="주소를 입력하세요" />
+                            <S.InfoWrite 
+                            placeholder="주소를 입력하세요" 
+                            value={userData.address} 
+                            onChange={(e) => setAddress(e.target.value)} 
+                            />
                             <S.InfoLine></S.InfoLine>
-                        </S.InfoEditGroup>  
-                    </S.InfoGroup>    
-                    <S.UpdateBtn>저장하기</S.UpdateBtn>
-                </S.SubGroup>
+                        </S.InfoEditGroup>      
+                    </S.InfoGroup>
+                    <S.UpdateBtn onClick={handleSubmit}>저장하기</S.UpdateBtn>
+                    </S.SubGroup>
                 <S.SubGroup>
                     <S.SubTitle>이전 홍보글 확인하기</S.SubTitle>
                     <S.TextGroup>
@@ -122,5 +158,4 @@ const MyPageUI = () => {
         </C.Wrapper>
     );
 };
-
 export default MyPageUI;
