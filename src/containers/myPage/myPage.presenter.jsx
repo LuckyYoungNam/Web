@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import * as S from "./myPage.style";
 import * as C from "../createText/createText.style";
 import useStore from "../../store/useStore";
-
-const MyPageUI = () => {
+import axios from 'axios';
+const MyPageUI = ({closeModal}) => {
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
     const { goToHome } = useStore();
     const userData = localStorage.getItem('userdata')
@@ -14,14 +14,6 @@ const MyPageUI = () => {
     const [businessName, setBusinessName] = useState("");
     const [location, setLocation] = useState("");
     const [address, setAddress] = useState("");
-    const handleSubmit = () => {
-        closeModal();
-         // 날짜 형식 파싱
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        const options = { month: 'numeric', day: 'numeric', weekday: 'short', hour: 'numeric', minute: 'numeric' };
-        return `${date.getMonth() + 1}월 ${date.getDate()}일 (${date.toLocaleDateString('ko-KR', { weekday: 'short' })}) ${date.getHours()}시 ${date.getMinutes()}분`;
-    };
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -55,13 +47,21 @@ const MyPageUI = () => {
         fetchPosts();
     }, [BACKEND_URL, page]);
 
+         // 날짜 형식 파싱
+         const formatDate = (dateString) => {
+            const date = new Date(dateString);
+            const options = { month: 'numeric', day: 'numeric', weekday: 'short', hour: 'numeric', minute: 'numeric' };
+            return `${date.getMonth() + 1}월 ${date.getDate()}일 (${date.toLocaleDateString('ko-KR', { weekday: 'short' })}) ${date.getHours()}시 ${date.getMinutes()}분`;
+        };
+    
+        const handlePageChange = (newPage) => {
+            if (newPage >= 0 && newPage < totalPages) {
+                setPage(newPage);
+            }
+        };
+    const handleSubmit = () => {
+        closeModal();
     // 페이지 변경 함수
-    const handlePageChange = (newPage) => {
-        if (newPage >= 0 && newPage < totalPages) {
-            setPage(newPage);
-        }
-    };
-
         const postData = async () => {
             try {
               const response = await axios.post(`${BACKEND_URL}/users/info`, {
