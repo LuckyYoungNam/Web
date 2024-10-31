@@ -5,7 +5,7 @@ import PageRoutes from './routes/pageroutes.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, useNavigate } from 'react-router-dom';
 import useStore from './store/useStore.jsx';
-import PWAInstallPrompt from './PWAInstall.js';
+import PWAInstallPrompt from './PWAInstall.js';
 
 function App() {
   const setNavigate = useStore((state) => state.setNavigate);
