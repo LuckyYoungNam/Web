@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 export const Wrapper = styled.div`
     padding: 30px 30px;
     width: 100vw;
-    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     background: white;
     display: flex;
     flex-direction: column;
@@ -60,6 +60,7 @@ export const LoginBtn = styled.button`
         width: 10vw;
         height: 5vh;
     }
+    color: black;
 `;
 
 export const KakaoIcon = styled.img`

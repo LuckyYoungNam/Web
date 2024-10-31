@@ -1,5 +1,8 @@
 import * as S from "./login.style"
 const LoginUI = () => {
+    const KakaoLogin = () => {
+        window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`;
+    }
     return (
         <S.Wrapper>
             <S.Group>
@@ -10,7 +13,7 @@ const LoginUI = () => {
                 </S.Group>
             </S.Group>
             <S.Logo src="/character.png"></S.Logo>
-            <S.LoginBtn>
+            <S.LoginBtn onClick={KakaoLogin}>
                 <S.KakaoIcon src="/kakaoIcon.png"/>
                 <S.LoginContent>카카오톡 로그인</S.LoginContent>
             </S.LoginBtn>
