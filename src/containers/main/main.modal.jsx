@@ -38,7 +38,7 @@ const MainModal = ({ isOpen, closeModal, isModalOpen }) => {
               console.error('Error:', error.response ? error.response.data : error.message);
             }
           };
-          //postData();
+          postData();
           closeModal();
     }
     const fetchData = async () => {
