@@ -5,7 +5,7 @@ import DaumPostcode from 'react-daum-postcode';
 import axios from "axios"
 Modal.setAppElement('#root');
 
-const MainModal = ({ isOpen, closeModal, isModalOpen, isClose, setIsClose }) => {
+const MainModal = ({ isModalOpen, setIsModalOpen }) => {
     const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
     const [businessName, setBusinessName] = useState("");
     const [location, setLocation] = useState("");
@@ -22,23 +22,23 @@ const MainModal = ({ isOpen, closeModal, isModalOpen, isClose, setIsClose }) => 
     const handleSubmit = () => {
         const postData = async () => {
             try {
-              const response = await axios.patch(`${BACKEND_URL}/users/info`, {
+                const response = await axios.patch(`${BACKEND_URL}/users/info`, {
                     businessName,
                     location,
                     address
-              }, {
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-                  'withCredentials': true,
-                }
-              });
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                        'withCredentials': true,
+                    }
+                });
             } catch (error) {
-              console.error('Error:', error.response ? error.response.data : error.message);
+                console.error('Error:', error.response ? error.response.data : error.message);
             }
-          };
-          postData();
-          setIsClose(true);
+        };
+        setIsModalOpen(false);
+        postData();
     }
     const fetchData = async () => {
         try {
@@ -61,7 +61,6 @@ const MainModal = ({ isOpen, closeModal, isModalOpen, isClose, setIsClose }) => 
     return (
         <Modal
             isOpen={isModalOpen}
-            onRequestClose={isClose} 
             style={{
                 content: {
                     width: '375px',
@@ -104,13 +103,15 @@ const MainModal = ({ isOpen, closeModal, isModalOpen, isClose, setIsClose }) => 
                     <S.ModelInput
                         value={address}
                         readOnly
-                        onChange={(e)=>setAddress(e.target.value)}
+                        onChange={(e) => setAddress(e.target.value)}
                         onClick={() => setIsAddressModalOpen(true)}
                     />
                     <S.InputLine />
                 </S.ModalInputGroup>
             </S.ModalGroup>
-            <S.SubmitBtn onClick={handleSubmit}>완료하기</S.SubmitBtn>
+            <S.SubmitBtn onClick={() => {
+                handleSubmit();
+            }}>완료하기</S.SubmitBtn>
 
 
             {/* 주소 검색 모달 */}
