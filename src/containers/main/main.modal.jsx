@@ -30,7 +30,8 @@ const MainModal = ({ isOpen, closeModal }) => {
               }, {
                 headers: {
                   'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                  'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                  'withCredentials': true,
                 }
               });
               console.log(response.data);

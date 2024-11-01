@@ -14,7 +14,8 @@ const RedirectPage = () => {
                     {
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': `${code}`
+                            'Authorization': `${code}`,
+                            'withCredentials': true,
                         },
                     }
                 );

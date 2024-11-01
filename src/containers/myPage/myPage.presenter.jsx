@@ -3,19 +3,23 @@ import * as S from "./myPage.style";
 import * as C from "../createText/createText.style";
 import useStore from "../../store/useStore";
 import axios from 'axios';
+import TextDetail from './textDetail.component';
+
 const MyPageUI = ({ closeModal }) => {
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
     const { goToHome } = useStore();
     const userData = JSON.parse(localStorage.getItem('userdata')) || {};
 
     const [posts, setPosts] = useState([]);
-    const [page, setPage] = useState(0); // 현재 페이지 상태
-    const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
-
+    const [page, setPage] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
+    const [selectedPostId, setSelectedPostId] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     // useState로 초기 상태 설정
     const [businessName, setBusinessName] = useState(userData.businessName || "");
     const [location, setLocation] = useState(userData.location || "");
     const [address, setAddress] = useState(userData.address || "");
+
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -30,6 +34,7 @@ const MyPageUI = ({ closeModal }) => {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${accessToken}`,
+                        'withCredentials': true,
                     },
                 });
 
@@ -52,7 +57,6 @@ const MyPageUI = ({ closeModal }) => {
     // 날짜 형식 파싱
     const formatDate = (dateString) => {
         const date = new Date(dateString);
-        const options = { month: 'numeric', day: 'numeric', weekday: 'short', hour: 'numeric', minute: 'numeric' };
         return `${date.getMonth() + 1}월 ${date.getDate()}일 (${date.toLocaleDateString('ko-KR', { weekday: 'short' })}) ${date.getHours()}시 ${date.getMinutes()}분`;
     };
 
@@ -61,8 +65,8 @@ const MyPageUI = ({ closeModal }) => {
             setPage(newPage);
         }
     };
+
     const handleSubmit = () => {
-        // 페이지 변경 함수
         const postData = async () => {
             try {
                 const response = await axios.patch(`${BACKEND_URL}/users/info`, {
@@ -72,7 +76,7 @@ const MyPageUI = ({ closeModal }) => {
                 }, {
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
                     }
                 });
                 console.log(response.data);
@@ -83,6 +87,15 @@ const MyPageUI = ({ closeModal }) => {
         postData();
         closeModal();
     }
+    // 모달 
+    const openModal = (postId) => {
+        setSelectedPostId(postId);
+        setIsModalOpen(true);
+    };
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedPostId(null);
+    };
     return (
         <C.Wrapper>
             <C.Header>
@@ -131,7 +144,6 @@ const MyPageUI = ({ closeModal }) => {
                 <S.SubGroup>
                     <S.SubTitle>이전 홍보글 확인하기</S.SubTitle>
                     <S.TextGroup>
-                        {/* 최신순으로 정렬 */}
                         {posts.map((post) => (
                             <S.BeforeContent
                                 key={post.postId}
@@ -156,6 +168,11 @@ const MyPageUI = ({ closeModal }) => {
                     </S.Pagination>
                 </S.SubGroup>
             </S.MainSection>
+            <TextDetail 
+                isOpen={isModalOpen} 
+                postId={selectedPostId} 
+                closeModal={closeModal} 
+            />
         </C.Wrapper>
     );
 };

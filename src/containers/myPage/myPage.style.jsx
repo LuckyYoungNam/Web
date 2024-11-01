@@ -143,5 +143,21 @@ export const PaginationBtn = styled.button`
     border: none;
     background: none;
 `
+// textDetail
+export const IconGroup = styled.div`
+    display: flex;
+    gap: 15px;
+    font-size: 18px;
+`
 
-
+export const ViewText = styled.div`
+    background: gray;
+    width: 100%;
+    min-height: 50%;
+    margin-top: 10%;
+    padding: 5%;
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
+    font-family: "Pretendard";
+`
