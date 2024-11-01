@@ -1,18 +1,21 @@
 import MainModal from "./main.modal";
 import * as S from "./main.style";
 import useStore from '../../store/useStore'; 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const MainUI = () => {
     const { goToMyPage, goToCreateImg, goToCreateText } = useStore();
     
     // 모달 열림 상태 관리
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(true);
     
     // 모달 열고 닫기 함수
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
     const userData = JSON.parse(localStorage.getItem('userdata')) || {};
+    if(userData && userData.location && userData.businessName && userData.address) {
+        closeModal();
+    }
     return (
         <S.Wrapper>
             <S.Title>홍보사원, 영남이</S.Title>
@@ -37,7 +40,7 @@ const MainUI = () => {
             
             {/* 모달 컴포넌트에 열림 상태와 닫기 함수 전달 */}
             {/*사용자 정보 입력 여부에 따른 모달 동작 여부*/}
-            <MainModal isOpen={(!userData.location || !userData.businessName || !userData.address)?true:false} closeModal={closeModal} isModalOpen={isModalOpen} />
+            <MainModal closeModal={closeModal} openModal={openModal} isModalOpen={isModalOpen} />
         </S.Wrapper>
     );
 };
