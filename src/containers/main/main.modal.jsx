@@ -24,7 +24,7 @@ const MainModal = ({ isModalOpen, setIsModalOpen }) => {
 
     const handleSubmit = async () => {
         try {
-            await axios.patch(`${BACKEND_URL}/users/info`, {
+            await axios.post(`${BACKEND_URL}/users/info`, {
                 businessName: tempBusinessName,
                 location: tempLocation,
                 address: tempAddress
