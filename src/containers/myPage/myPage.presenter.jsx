@@ -5,7 +5,7 @@ import useStore from "../../store/useStore";
 import axios from 'axios';
 import TextDetail from './textDetail.component';
 
-const MyPageUI = ({ closeModal }) => {
+const MyPageUI = () => {
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
     const { goToHome } = useStore();
     const userData = JSON.parse(localStorage.getItem('userdata')) || {};
