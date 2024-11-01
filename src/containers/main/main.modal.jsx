@@ -35,12 +35,27 @@ const MainModal = ({ isModalOpen, setIsModalOpen }) => {
                 },
                 withCredentials: true,
             });
+            // 요청이 성공한 후에만 모달 닫기
+            setIsModalOpen(false);
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
         }
-        setIsModalOpen(false); // Close the modal after successful submission
     };
-
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`${BACKEND_URL}/users/info`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                    'withCredentials': true,
+                }
+            });
+            console.log(response.data); // 응답 데이터 출력
+            localStorage.setItem('userdata', JSON.stringify(response.data));
+        } catch (error) {
+            console.error('Error:', error.response ? error.response.data : error.message);
+        }
+    };
+    fetchData();
     return (
         <Modal
             isOpen={isModalOpen}
