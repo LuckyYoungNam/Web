@@ -16,9 +16,9 @@ const MyPageUI = () => {
     const [selectedPostId, setSelectedPostId] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     // useState로 초기 상태 설정
-    const [businessName, setBusinessName] = useState(userData.businessName || "");
-    const [location, setLocation] = useState(userData.location || "");
-    const [address, setAddress] = useState(userData.address || "");
+    const [businessName, setBusinessName] = useState(userData?.businessName || "");
+    const [location, setLocation] = useState(userData?.location || "");
+    const [address, setAddress] = useState(userData?.address || "");
     console.log(businessName);
     useEffect(() => {
         const fetchPosts = async () => {

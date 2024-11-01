@@ -25,7 +25,7 @@ const MainUI = () => {
                         <S.MyPageLabel>마이 페이지</S.MyPageLabel>
                     </S.MainBtn>
                     <S.MenuItem> 
-                        <S.MenuItemLabel>대표 사진 만들기</S.MenuItemLabel>
+                        <S.MenuItemLabel onClick={goToCreateImg}>대표 사진 만들기</S.MenuItemLabel>
                         <S.ArrowIcon src="/arrow.png" />
                     </S.MenuItem>
                     <S.MenuItem onClick={goToCreateText}>
