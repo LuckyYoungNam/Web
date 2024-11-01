@@ -45,7 +45,8 @@ const MainModal = ({ isOpen, closeModal }) => {
         try {
             const response = await axios.get(`${BACKEND_URL}/users/info`, {
                 headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                    'withCredentials': true,
                 }
             });
             console.log(response.data); // 응답 데이터 출력
