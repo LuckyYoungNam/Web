@@ -30,8 +30,8 @@ const MainModal = ({ isModalOpen, setIsModalOpen }) => {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-                        'withCredentials': true,
-                    }
+                    },
+                    'withCredentials': true,
                 });
             } catch (error) {
                 console.error('Error:', error.response ? error.response.data : error.message);
