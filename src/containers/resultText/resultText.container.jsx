@@ -27,7 +27,6 @@ const ResultTextContainer = () => {
                 },
                 body: JSON.stringify({ postPreContent }),
             });
-0.8, 0.2 + 가산점 //상호평가가 
             if (response.ok) {
                 const data = await response.json();
                 onComplete(data);
