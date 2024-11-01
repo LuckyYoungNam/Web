@@ -3,7 +3,7 @@ import ResultAnimation from "./components/resultAnimation.component";
 import ResultDisplay from "./components/resultDisplay.component";
 import React from 'react';
 
-const ResultTextUI = ({ goToHome, showDisplay, displayState, submitText }) => {
+const ResultTextUI = ({ goToHome, showDisplay, displayState, submitText, content}) => {
     return (
         <S.Wrapper>
             <S.Header>

@@ -68,7 +68,7 @@ const ResultDisplay = ({ content = "", postId }) => {
                 <S.resultContent
                     as="textarea"
                     style={{ whiteSpace: 'pre-wrap' }}
-                    value={editableContent}
+                    value={localStorage.getItem('text')}
                     readOnly={!isEditing}
                     onChange={(e) => setEditableContent(e.target.value)}
                 />

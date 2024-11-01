@@ -29,6 +29,7 @@ const ResultTextContainer = () => {
             });
             if (response.ok) {
                 const data = await response.json();
+                localStorage.setItem('text', response.data.postGptContent)
                 onComplete(data);
             } else {
                 console.error("응답 오류:", response.statusText);
@@ -41,7 +42,8 @@ const ResultTextContainer = () => {
     };
 
     return (
-        <ResultTextUI 
+        <ResultTextUI
+            content={localStorage.getItem('text')}
             goToHome={goToHome} 
             showDisplay={showDisplay} 
             displayState={displayState} 
