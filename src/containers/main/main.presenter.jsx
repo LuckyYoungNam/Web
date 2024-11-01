@@ -13,9 +13,11 @@ const MainUI = () => {
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
     const userData = JSON.parse(localStorage.getItem('userdata')) || {};
-    if(userData.location) {
-        closeModal();
-    }
+    useEffect(() => {
+        if (userData && userData.location) {
+            closeModal();
+        }
+    }, [userData]);
     return (
         <S.Wrapper>
             <S.Title>홍보사원, 영남이</S.Title>
