@@ -4,11 +4,9 @@ import useStore from '../../store/useStore';
 import React, { useEffect, useState } from 'react';
 
 const MainUI = () => {
-    const { goToMyPage, goToCreateImg, goToCreateText } = useStore();
-    
     // 모달 열림 상태 관리
     const [isModalOpen, setIsModalOpen] = useState(true);
-    
+    const { goToMyPage, goToCreateImg, goToCreateText } = useStore();
     // 모달 열고 닫기 함수
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);

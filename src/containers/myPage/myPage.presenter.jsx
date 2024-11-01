@@ -6,10 +6,6 @@ import axios from 'axios';
 import TextDetail from './textDetail.component';
 
 const MyPageUI = () => {
-    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-    const { goToHome } = useStore();
-    const userData = JSON.parse(localStorage.getItem('userdata')) || {};
-
     const [posts, setPosts] = useState([]);
     const [page, setPage] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
@@ -19,6 +15,10 @@ const MyPageUI = () => {
     const [businessName, setBusinessName] = useState(userData?.businessName || "");
     const [location, setLocation] = useState(userData?.location || "");
     const [address, setAddress] = useState(userData?.address || "");
+    const { goToHome } = useStore();
+    const userData = JSON.parse(localStorage.getItem('userdata')) || {};
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
     console.log(businessName);
     useEffect(() => {
         const fetchPosts = async () => {
@@ -52,7 +52,7 @@ const MyPageUI = () => {
         };
 
         fetchPosts();
-    }, [BACKEND_URL, page]);
+    }, []);
 
     // 날짜 형식 파싱
     const formatDate = (dateString) => {
