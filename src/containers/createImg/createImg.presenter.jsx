@@ -59,8 +59,8 @@ const CreateImgUI = ({ image, handleImageUpload, region, keywords, handleAddText
                             <S.UploadedImage ref={imageRef} src={image} alt="Uploaded" />
                             {isClick && (
                                 <S.TextOverlay>
-                                    <S.RegionText style={{color:"black"}}>{userData.location} 핫플</S.RegionText>
-                                    <S.RegionText regionTextColor={colors.regionTextColor}>{userData.businessName}</S.RegionText>
+                                    <S.RegionText style={{color:"white", fontSize:"32px"}}>{userData.location}서울 핫플</S.RegionText>
+                                    <S.RegionText regionTextColor={colors.regionTextColor}>{userData.businessName}도훈이네김치찌개집이에요</S.RegionText>
                                     <S.KeywordText keywordTextColor={colors.keywordTextColor}>
                                         {keywords.map((keyword, index) => (
                                             <span key={index}>{keyword} </span>
@@ -90,7 +90,7 @@ const CreateImgUI = ({ image, handleImageUpload, region, keywords, handleAddText
                     <S.AddBtn
                         onClick={isClick ? handleSaveImage : handleAddText}
                         style={{
-                            backgroundColor: isClick ? 'black' : '#496BEA',
+                            backgroundColor: '#496BEA',
                         }}
                     >
                         {isClick ? "이미지 저장하기" : "문구 추가하기"}

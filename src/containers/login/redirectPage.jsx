@@ -27,7 +27,7 @@ const RedirectPage = () => {
                 if(localStorage.getItem('accessToken')){
                     window.location.href = '/main';
                 }
-            } catch (error) {
+            } catch (error) {  
                 console.error('토큰 요청 중 에러 발생:', error);
             }
         };

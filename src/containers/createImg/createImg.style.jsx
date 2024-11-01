@@ -103,7 +103,7 @@ export const Description = styled.div`
 export const AddBtn = styled.button`
     width: 300px;
     height: 50px;
-    background: #496BEA;
+    background: #D9D9D9;
     font-family: "Pretendard";
     color: white;
     font-size: 20px;
@@ -133,22 +133,38 @@ export const HiddenInput = styled.input`
 
 export const RegionText = styled.div`
     font-size: 40px;
-    font-weight: bold;
+    font-family: 'PartialSansKR-Regular';
+    text-shadow: 
+        -3px -3px 0 #000, 
+         3px -3px 0 #000, 
+        -3px  3px 0 #000, 
+         3px  3px 0 #000,
+        -3px  0   0 #000, 
+         3px  0   0 #000,
+         0   -3px 0 #000, 
+         0    3px 0 #000,
+        -4px -4px 0 #000,
+         4px -4px 0 #000,
+        -4px  4px 0 #000,
+         4px  4px 0 #000; /* 매우 굵은 검은 윤곽선 */
     color: ${(props) => props.regionTextColor};
+    @media (min-width: 340px) {
+            font-size: 24px;
+    }
 `;
 
 export const KeywordText = styled.div`
     font-size: 18px;
     margin-top: 10px;
-    font-weight: bold;
-    stroke: black;
+    font-weight: 500;
+    font-family: 'SBAggroB';
     color: ${(props) => props.keywordTextColor};
 `;
+
 
 export const TextOverlay = styled.div`
     position: absolute;
     top: 320px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     align-items: center;
