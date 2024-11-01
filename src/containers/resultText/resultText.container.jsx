@@ -7,11 +7,10 @@ const ResultTextContainer = () => {
     const [showDisplay, setShowDisplay] = useState(false);
 
     const displayState = () => setShowDisplay(true);
-
+    const accessToken = localStorage.getItem('accessToken');
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
     const submitText = async (postPreContent, onComplete) => {
-        const accessToken = localStorage.getItem('accessToken');
         if (!accessToken) {
             alert("로그인이 필요합니다.");
             return;
