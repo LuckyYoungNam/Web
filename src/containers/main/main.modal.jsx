@@ -51,6 +51,9 @@ const MainModal = ({ isOpen, closeModal, isModalOpen }) => {
             });
             console.log(response.data); // 응답 데이터 출력
             localStorage.setItem('userdata', JSON.stringify(response.data));
+            setAddress(response.data.address);
+            setBusinessName(response.data.businessName);
+            setLocation(response.data.location);
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
         }

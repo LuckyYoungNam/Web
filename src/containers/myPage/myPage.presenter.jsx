@@ -18,8 +18,6 @@ const MyPageUI = () => {
     const { goToHome } = useStore();
     const userData = JSON.parse(localStorage.getItem('userdata')) || {};
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-
-    console.log(businessName);
     useEffect(() => {
         const fetchPosts = async () => {
             try {
