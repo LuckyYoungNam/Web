@@ -19,7 +19,7 @@ const MyPageUI = () => {
     const [businessName, setBusinessName] = useState(userData.businessName || "");
     const [location, setLocation] = useState(userData.location || "");
     const [address, setAddress] = useState(userData.address || "");
-
+    console.log(businessName);
     useEffect(() => {
         const fetchPosts = async () => {
             try {
