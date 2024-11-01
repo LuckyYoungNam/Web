@@ -7,9 +7,6 @@ Modal.setAppElement('#root');
 
 const MainModal = ({ isModalOpen, setIsModalOpen }) => {
     const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
-    const [businessName, setBusinessName] = useState("");
-    const [location, setLocation] = useState("");
-    const [address, setAddress] = useState("");
 
     // Temporary state for inputs
     const [tempBusinessName, setTempBusinessName] = useState("");
@@ -25,31 +22,23 @@ const MainModal = ({ isModalOpen, setIsModalOpen }) => {
         setIsAddressModalOpen(false); // 주소 검색 모달 닫기
     };
 
-    const handleSubmit = () => {
-        // Update final state when submitting
-        setBusinessName(tempBusinessName);
-        setLocation(tempLocation);
-        setAddress(tempAddress);
-
-        const postData = async () => {
-            try {
-                await axios.patch(`${BACKEND_URL}/users/info`, {
-                    businessName: tempBusinessName,
-                    location: tempLocation,
-                    address: tempAddress
-                }, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-                    },
-                    withCredentials: true,
-                });
-            } catch (error) {
-                console.error('Error:', error.response ? error.response.data : error.message);
-            }
-        };
-        postData();
-        setIsModalOpen(false);
+    const handleSubmit = async () => {
+        try {
+            await axios.patch(`${BACKEND_URL}/users/info`, {
+                businessName: tempBusinessName,
+                location: tempLocation,
+                address: tempAddress
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                },
+                withCredentials: true,
+            });
+            setIsModalOpen(false); // Close the modal after successful submission
+        } catch (error) {
+            console.error('Error:', error.response ? error.response.data : error.message);
+        }
     };
 
     return (
