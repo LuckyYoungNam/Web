@@ -22,9 +22,9 @@ const ResultTextContainer = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${accessToken}`,
-                    'withCredentials': true,  
+                    "Authorization": `Bearer ${accessToken}`
                 },
+                'withCredentials': true,  
                 body: JSON.stringify({ postPreContent }),
             });
             if (response.ok) {
