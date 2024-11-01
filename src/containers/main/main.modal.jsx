@@ -110,6 +110,7 @@ const MainModal = ({ isOpen, closeModal }) => {
             </S.ModalGroup>
             <S.SubmitBtn onClick={handleSubmit}>완료하기</S.SubmitBtn>
 
+
             {/* 주소 검색 모달 */}
             <Modal
                 isOpen={isAddressModalOpen}
