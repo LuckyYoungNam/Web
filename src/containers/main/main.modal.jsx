@@ -59,7 +59,7 @@ const MainModal = ({ isOpen, closeModal, isModalOpen }) => {
     return (
         <Modal
             isOpen={isModalOpen}
-            onRequestClose={isModalOpen}
+            onRequestClose={closeModal} 
             style={{
                 content: {
                     width: '375px',
