@@ -10,6 +10,7 @@ const MainModal = ({ isOpen, closeModal }) => {
     const [businessName, setBusinessName] = useState("");
     const [location, setLocation] = useState("");
     const [address, setAddress] = useState("");
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
     // 주소 검색 완료 시 처리 함수
     const handleAddressSelect = (data) => {
         const fullAddress = data.address;
@@ -22,7 +23,7 @@ const MainModal = ({ isOpen, closeModal }) => {
         closeModal();
         const postData = async () => {
             try {
-              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/info`, {
+              const response = await axios.patch(`${BACKEND_URL}/users/info`, {
                     businessName,
                     location,
                     address
@@ -41,7 +42,7 @@ const MainModal = ({ isOpen, closeModal }) => {
     }
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://3.39.4.132/users/info', {
+            const response = await axios.get(`${BACKEND_URL}/users/info`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 }

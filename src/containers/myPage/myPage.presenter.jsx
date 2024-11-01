@@ -6,7 +6,6 @@ import TextDetail from './textDetail.component';
 
 const MyPageUI = () => {
 import axios from 'axios';
-
 const MyPageUI = ({ closeModal }) => {
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
     const { goToHome } = useStore();
@@ -44,7 +43,7 @@ const MyPageUI = ({ closeModal }) => {
 
                 if (response.ok) {
                     const data = await response.json();
-                    const sortedPosts = data.content.sort((a, b) => new Date(b.postDate) - new Date(a.postDate));
+                    const sortedPosts = data.content.sort((a, b) => new Date(b.postDate) - new Date(a.postDate)); // 최신순 정렬
                     setPosts(sortedPosts);
                     setTotalPages(data.totalPages);
                 } else {
@@ -80,21 +79,12 @@ const MyPageUI = ({ closeModal }) => {
                 setPage(newPage);
             }
         };
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        return `${date.getMonth() + 1}월 ${date.getDate()}일 (${date.toLocaleDateString('ko-KR', { weekday: 'short' })}) ${date.getHours()}시 ${date.getMinutes()}분`;
-    };
 
-    const handlePageChange = (newPage) => {
-        if (newPage >= 0 && newPage < totalPages) {
-            setPage(newPage);
-        }
-    };
     const handleSubmit = () => {
-        closeModal();
+        // 페이지 변경 함수
         const postData = async () => {
             try {
-                const response = await axios.post(`${BACKEND_URL}/users/info`, {
+                const response = await axios.patch(`${BACKEND_URL}/users/info`, {
                     businessName,
                     location,
                     address
@@ -110,8 +100,8 @@ const MyPageUI = ({ closeModal }) => {
             }
         };
         postData();
-    };
-
+        closeModal();
+    }
     return (
         <C.Wrapper>
             <C.Header>
@@ -125,10 +115,10 @@ const MyPageUI = ({ closeModal }) => {
                     <S.InfoGroup>
                         <S.InfoText>상호명</S.InfoText>
                         <S.InfoEditGroup>
-                            <S.InfoWrite 
-                                placeholder="상호명을 입력하세요" 
-                                value={businessName} 
-                                onChange={(e) => setBusinessName(e.target.value)} 
+                            <S.InfoWrite
+                                placeholder="상호명을 입력하세요"
+                                value={businessName}
+                                onChange={(e) => setBusinessName(e.target.value)}
                             />
                             <S.InfoLine></S.InfoLine>
                         </S.InfoEditGroup>
@@ -136,10 +126,10 @@ const MyPageUI = ({ closeModal }) => {
                     <S.InfoGroup>
                         <S.InfoText>지역</S.InfoText>
                         <S.InfoEditGroup>
-                            <S.InfoWrite 
-                                placeholder="지역 정보를 입력하세요" 
-                                value={location} 
-                                onChange={(e) => setLocation(e.target.value)} 
+                            <S.InfoWrite
+                                placeholder="지역 정보를 입력하세요"
+                                value={location}
+                                onChange={(e) => setLocation(e.target.value)}
                             />
                             <S.InfoLine></S.InfoLine>
                         </S.InfoEditGroup>
@@ -147,10 +137,10 @@ const MyPageUI = ({ closeModal }) => {
                     <S.InfoGroup>
                         <S.InfoText>주소</S.InfoText>
                         <S.InfoEditGroup>
-                            <S.InfoWrite 
-                                placeholder="주소를 입력하세요" 
-                                value={address} 
-                                onChange={(e) => setAddress(e.target.value)} 
+                            <S.InfoWrite
+                                placeholder="주소를 입력하세요"
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
                             />
                             <S.InfoLine></S.InfoLine>
                         </S.InfoEditGroup>
@@ -160,8 +150,9 @@ const MyPageUI = ({ closeModal }) => {
                 <S.SubGroup>
                     <S.SubTitle>이전 홍보글 확인하기</S.SubTitle>
                     <S.TextGroup>
+                        {/* 최신순으로 정렬 */}
                         {posts.map((post) => (
-                            <S.BeforeContent 
+                            <S.BeforeContent
                                 key={post.postId}
                                 onClick={() => openModal(post.postId)} // postId로 모달 열기
                             >
@@ -193,5 +184,4 @@ const MyPageUI = ({ closeModal }) => {
         </C.Wrapper>
     );
 };
-
 export default MyPageUI;

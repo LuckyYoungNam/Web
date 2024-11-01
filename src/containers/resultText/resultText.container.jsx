@@ -18,11 +18,11 @@ const ResultTextContainer = () => {
         }
 
         try {
-            const response = await fetch(`${BACKEND_URL}/post/save-pre`, {
+            const response = await fetch(`${BACKEND_URL}/api/v1/member/post/save-pre`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${accessToken}`,
+                    "Authorization": `${accessToken}`,
                 },
                 body: JSON.stringify({ postPreContent }),
             });

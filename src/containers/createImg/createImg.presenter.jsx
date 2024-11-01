@@ -59,7 +59,7 @@ const CreateImgUI = ({ image, handleImageUpload, region, keywords, handleAddText
                             <S.UploadedImage ref={imageRef} src={image} alt="Uploaded" />
                             {isClick && (
                                 <S.TextOverlay>
-                                    <S.RegionText style={{color:"black"}}>{userData.location} 맛집</S.RegionText>
+                                    <S.RegionText style={{color:"black"}}>{userData.location} 핫플</S.RegionText>
                                     <S.RegionText regionTextColor={colors.regionTextColor}>{userData.businessName}</S.RegionText>
                                     <S.KeywordText keywordTextColor={colors.keywordTextColor}>
                                         {keywords.map((keyword, index) => (
