@@ -10,6 +10,7 @@ const MainModal = ({ isOpen, closeModal, isModalOpen }) => {
     const [businessName, setBusinessName] = useState("");
     const [location, setLocation] = useState("");
     const [address, setAddress] = useState("");
+    const [isClose, setIsClose] = useState(false);
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
     // 주소 검색 완료 시 처리 함수
     const handleAddressSelect = (data) => {
@@ -39,7 +40,7 @@ const MainModal = ({ isOpen, closeModal, isModalOpen }) => {
             }
           };
           postData();
-          closeModal();
+          setIsClose(true);
     }
     const fetchData = async () => {
         try {
@@ -62,7 +63,7 @@ const MainModal = ({ isOpen, closeModal, isModalOpen }) => {
     return (
         <Modal
             isOpen={isModalOpen}
-            onRequestClose={closeModal} 
+            onRequestClose={isClose} 
             style={{
                 content: {
                     width: '375px',
