@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
     height: calc(var(--vh, 1vh) * 100);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
     padding: 10px;
     @media (min-width: 820px) {
         width: 820px;
@@ -147,7 +147,7 @@ export const ModalInfo = styled.div`
 `
 
 export const ModelInput = styled.input`
-    width: 250px;
+    width: 200px;
     height: 90%;
     bottom: 0;
     border: none;   
