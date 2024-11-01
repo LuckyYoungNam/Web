@@ -7,7 +7,7 @@ const RedirectPage = () => {
         const getToken = async () => {
             try {
                 const response = await axios.post(
-                    `${BACKEND_URL}/users/login`,
+                    `https://www.lucky-youngnam.p-e.kr/users/login`,
                     {
                         code: code  //인가코드 전달
                     },
