@@ -2,17 +2,30 @@ import React, { useEffect, useState } from 'react';
 import * as S from "./myPage.style";
 import * as C from "../createText/createText.style";
 import useStore from "../../store/useStore";
+import TextDetail from './textDetail.component'; 
+
+const MyPageUI = () => {
 import axios from 'axios';
 const MyPageUI = ({ closeModal }) => {
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
     const { goToHome } = useStore();
     const userData = JSON.parse(localStorage.getItem('userdata')) || {};
-
     const [posts, setPosts] = useState([]);
+    const [page, setPage] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
+    const [selectedPostId, setSelectedPostId] = useState(null); 
+    const [isModalOpen, setIsModalOpen] = useState(false); 
+
+    // 날짜 형식 파싱
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return `${date.getMonth() + 1}월 ${date.getDate()}일 (${date.toLocaleDateString('ko-KR', { weekday: 'short' })}) ${date.getHours()}시 ${date.getMinutes()}분`;
+    };
     const [page, setPage] = useState(0); // 현재 페이지 상태
     const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
-
-    // useState로 초기 상태 설정
+    const [businessName, setBusinessName] = useState("");
+    const [location, setLocation] = useState("");
+    const [address, setAddress] = useState("");
     const [businessName, setBusinessName] = useState(userData.businessName || "");
     const [location, setLocation] = useState(userData.location || "");
     const [address, setAddress] = useState(userData.address || "");
@@ -20,11 +33,6 @@ const MyPageUI = ({ closeModal }) => {
         const fetchPosts = async () => {
             try {
                 const accessToken = localStorage.getItem('accessToken');
-                if (!accessToken) {
-                    console.error("accessToken 오류 발생");
-                    return;
-                }
-
                 const response = await fetch(`${BACKEND_URL}/post/findAll?page=${page}&size=3`, {
                     method: "GET",
                     headers: {
@@ -48,19 +56,30 @@ const MyPageUI = ({ closeModal }) => {
 
         fetchPosts();
     }, [BACKEND_URL, page]);
-
-    // 날짜 형식 파싱
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        const options = { month: 'numeric', day: 'numeric', weekday: 'short', hour: 'numeric', minute: 'numeric' };
-        return `${date.getMonth() + 1}월 ${date.getDate()}일 (${date.toLocaleDateString('ko-KR', { weekday: 'short' })}) ${date.getHours()}시 ${date.getMinutes()}분`;
+    // 모달 
+    const openModal = (postId) => {
+        setSelectedPostId(postId);
+        setIsModalOpen(true);
     };
 
-    const handlePageChange = (newPage) => {
-        if (newPage >= 0 && newPage < totalPages) {
-            setPage(newPage);
-        }
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedPostId(null);
     };
+
+         // 날짜 형식 파싱
+         const formatDate = (dateString) => {
+            const date = new Date(dateString);
+            const options = { month: 'numeric', day: 'numeric', weekday: 'short', hour: 'numeric', minute: 'numeric' };
+            return `${date.getMonth() + 1}월 ${date.getDate()}일 (${date.toLocaleDateString('ko-KR', { weekday: 'short' })}) ${date.getHours()}시 ${date.getMinutes()}분`;
+        };
+    
+        const handlePageChange = (newPage) => {
+            if (newPage >= 0 && newPage < totalPages) {
+                setPage(newPage);
+            }
+        };
+
     const handleSubmit = () => {
         // 페이지 변경 함수
         const postData = async () => {
@@ -135,27 +154,33 @@ const MyPageUI = ({ closeModal }) => {
                         {posts.map((post) => (
                             <S.BeforeContent
                                 key={post.postId}
-                                onClick={() => console.log(`홍보글 ID: ${post.postId} 클릭됨`)}
+                                onClick={() => openModal(post.postId)} // postId로 모달 열기
                             >
                                 {formatDate(post.postDate)}
                             </S.BeforeContent>
                         ))}
                     </S.TextGroup>
+                    {/* 페이지네이션 */}
                     <S.Pagination>
                         {page > 0 && (
-                            <S.PaginationBtn onClick={() => handlePageChange(page - 1)}>
-                                <i className="bi bi-caret-left-fill" style={{ fontSize: "15px" }}></i>
+                            <S.PaginationBtn onClick={() => setPage(page - 1)}>
+                                이전
                             </S.PaginationBtn>
                         )}
                         <span>{page + 1} / {totalPages}</span>
                         {page < totalPages - 1 && (
-                            <S.PaginationBtn onClick={() => handlePageChange(page + 1)}>
-                                <i className="bi bi-caret-right-fill" style={{ fontSize: "15px" }}></i>
+                            <S.PaginationBtn onClick={() => setPage(page + 1)}>
+                                다음
                             </S.PaginationBtn>
                         )}
                     </S.Pagination>
                 </S.SubGroup>
             </S.MainSection>
+            <TextDetail 
+                isOpen={isModalOpen} 
+                postId={selectedPostId} 
+                closeModal={closeModal} 
+            />
         </C.Wrapper>
     );
 };
