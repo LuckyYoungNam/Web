@@ -35,10 +35,10 @@ const MainModal = ({ isModalOpen, setIsModalOpen }) => {
                 },
                 withCredentials: true,
             });
-            setIsModalOpen(false); // Close the modal after successful submission
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
         }
+        setIsModalOpen(false); // Close the modal after successful submission
     };
 
     return (
