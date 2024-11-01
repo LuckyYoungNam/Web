@@ -1,11 +1,11 @@
 import * as S from "./main.style";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import DaumPostcode from 'react-daum-postcode';
 import axios from "axios"
 Modal.setAppElement('#root');
 
-const MainModal = ({ openModal, closeModal, isModalOpen }) => {
+const MainModal = ({ isOpen, closeModal, isModalOpen }) => {
     const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
     const [businessName, setBusinessName] = useState("");
     const [location, setLocation] = useState("");
@@ -17,6 +17,8 @@ const MainModal = ({ openModal, closeModal, isModalOpen }) => {
         setAddress(fullAddress); // 선택한 주소를 상태에 저장
         setIsAddressModalOpen(false); // 주소 검색 모달 닫기
     };
+
+    console.log(localStorage.getItem('accessToken'))
     const handleSubmit = () => {
         const postData = async () => {
             try {
@@ -36,40 +38,28 @@ const MainModal = ({ openModal, closeModal, isModalOpen }) => {
               console.error('Error:', error.response ? error.response.data : error.message);
             }
           };
-          if(!localStorage.getItem('userdata')){
-            postData();
-          }
+          //postData();
           closeModal();
     }
     const fetchData = async () => {
-        // 로컬스토리지에 'userdata'가 없는 경우에만 실행
-        if (!localStorage.getItem('userdata')) {
-            try {
-                const response = await axios.get(`${BACKEND_URL}/users/info`, {
-                    headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-                    }
-                });
-                console.log(response.data); // 응답 데이터 출력
-                // 응답 데이터를 로컬스토리지에 저장
-                localStorage.setItem('userdata', JSON.stringify(response.data));
-    
-                // 상태값 설정
-                setAddress(response.data.address);
-                setBusinessName(response.data.businessName);
-                setLocation(response.data.location);
-            } catch (error) {
-                console.error('Error:', error.response ? error.response.data : error.message);
-            }
+        try {
+            const response = await axios.get(`${BACKEND_URL}/users/info`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                    'withCredentials': true,
+                }
+            });
+            console.log(response.data); // 응답 데이터 출력
+            localStorage.setItem('userdata', JSON.stringify(response.data));
+        } catch (error) {
+            console.error('Error:', error.response ? error.response.data : error.message);
         }
     };
-    useEffect(() => {
-        fetchData();
-    }, []); // 빈 배열로 두어 한 번만 실행되게 설정
+    fetchData();
     return (
         <Modal
             isOpen={isModalOpen}
-            onRequestClose={closeModal}
+            onRequestClose={isModalOpen}
             style={{
                 content: {
                     width: '375px',
