@@ -20,7 +20,6 @@ const MainModal = ({ isOpen, closeModal }) => {
 
     console.log(localStorage.getItem('accessToken'))
     const handleSubmit = () => {
-        closeModal();
         const postData = async () => {
             try {
               const response = await axios.patch(`${BACKEND_URL}/users/info`, {
@@ -39,7 +38,8 @@ const MainModal = ({ isOpen, closeModal }) => {
               console.error('Error:', error.response ? error.response.data : error.message);
             }
           };
-          postData();   
+          postData();
+          closeModal();
     }
     const fetchData = async () => {
         try {
@@ -80,6 +80,7 @@ const MainModal = ({ isOpen, closeModal }) => {
             }}
         >
             <S.ModalTitle>효과적인 홍보를 위해<br />기본 정보를 작성해주세요!</S.ModalTitle>
+            <S.Wrapper>
             <S.ModalGroup>
                 <S.ModalInfo>상호명</S.ModalInfo>
                 <S.ModalInputGroup>
@@ -108,8 +109,8 @@ const MainModal = ({ isOpen, closeModal }) => {
                     <S.InputLine />
                 </S.ModalInputGroup>
             </S.ModalGroup>
-
             <S.SubmitBtn onClick={handleSubmit}>완료하기</S.SubmitBtn>
+            </S.Wrapper>
 
             {/* 주소 검색 모달 */}
             <Modal

@@ -1,10 +1,10 @@
 import styled from "@emotion/styled"
 export const Wrapper = styled.div`
-    width: 100vw;
+    width: 400px;
     height: calc(var(--vh, 1vh) * 100);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
     padding: 10px;
     @media (min-width: 820px) {
         width: 820px;
@@ -129,7 +129,7 @@ export const ModalTitle = styled.div`
 export const ModalGroup = styled.div`
     display: flex;
     margin-bottom: 5%;
-    justify-content: space-between; 
+    gap: 5px;
     align-items: center;
     width: 100%;
 `
@@ -147,7 +147,7 @@ export const ModalInfo = styled.div`
 `
 
 export const ModelInput = styled.input`
-    width: 200px;
+    width: 250px;
     height: 90%;
     bottom: 0;
     border: none;   
