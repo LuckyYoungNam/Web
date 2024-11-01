@@ -5,7 +5,7 @@ import DaumPostcode from 'react-daum-postcode';
 import axios from "axios"
 Modal.setAppElement('#root');
 
-const MainModal = ({ isOpen, closeModal }) => {
+const MainModal = ({ isOpen, closeModal, isModalOpen }) => {
     const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
     const [businessName, setBusinessName] = useState("");
     const [location, setLocation] = useState("");
@@ -38,7 +38,7 @@ const MainModal = ({ isOpen, closeModal }) => {
               console.error('Error:', error.response ? error.response.data : error.message);
             }
           };
-          postData();
+          //postData();
           closeModal();
     }
     const fetchData = async () => {
@@ -58,8 +58,8 @@ const MainModal = ({ isOpen, closeModal }) => {
     fetchData();
     return (
         <Modal
-            isOpen={isOpen}
-            onRequestClose={closeModal}
+            isOpen={isModalOpen}
+            onRequestClose={isModalOpen}
             style={{
                 content: {
                     width: '375px',

@@ -37,7 +37,7 @@ const MainUI = () => {
             
             {/* 모달 컴포넌트에 열림 상태와 닫기 함수 전달 */}
             {/*사용자 정보 입력 여부에 따른 모달 동작 여부*/}
-            <MainModal isOpen={(!userData.location || !userData.businessName || !userData.address)?true:false} closeModal={closeModal} />
+            <MainModal isOpen={(!userData.location || !userData.businessName || !userData.address)?true:false} closeModal={closeModal} isModalOpen={isModalOpen} />
         </S.Wrapper>
     );
 };
