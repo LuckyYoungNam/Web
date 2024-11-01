@@ -5,12 +5,11 @@ import DaumPostcode from 'react-daum-postcode';
 import axios from "axios"
 Modal.setAppElement('#root');
 
-const MainModal = ({ isOpen, closeModal, isModalOpen }) => {
+const MainModal = ({ isOpen, closeModal, isModalOpen, isClose, setIsClose }) => {
     const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
     const [businessName, setBusinessName] = useState("");
     const [location, setLocation] = useState("");
     const [address, setAddress] = useState("");
-    const [isClose, setIsClose] = useState(false);
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
     // 주소 검색 완료 시 처리 함수
     const handleAddressSelect = (data) => {
@@ -34,7 +33,6 @@ const MainModal = ({ isOpen, closeModal, isModalOpen }) => {
                   'withCredentials': true,
                 }
               });
-              console.log(response.data);
             } catch (error) {
               console.error('Error:', error.response ? error.response.data : error.message);
             }

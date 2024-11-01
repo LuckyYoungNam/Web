@@ -6,13 +6,14 @@ import React, { useEffect, useState } from 'react';
 const MainUI = () => {
     // 모달 열림 상태 관리
     const [isModalOpen, setIsModalOpen] = useState(true);
+    const [isClose, setIsClose] = useState(false);
     const { goToMyPage, goToCreateImg, goToCreateText } = useStore();
     // 모달 열고 닫기 함수
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
     const userData = JSON.parse(localStorage.getItem('userdata')) || {};
-    if(userData && userData.location && userData.businessName && userData.address) {
-        closeModal();
+    if((userData.location === null || userData.businessName === null || userData.address === null) && isModalOpen!==true) {
+        setIsModalOpen(true);
     }
     return (
         <S.Wrapper>
@@ -38,7 +39,7 @@ const MainUI = () => {
             
             {/* 모달 컴포넌트에 열림 상태와 닫기 함수 전달 */}
             {/*사용자 정보 입력 여부에 따른 모달 동작 여부*/}
-            <MainModal closeModal={closeModal} openModal={openModal} isModalOpen={isModalOpen} />
+            <MainModal closeModal={closeModal} openModal={openModal} isModalOpen={isModalOpen} isClose={isClose} setIsClose={setIsClose}/>
         </S.Wrapper>
     );
 };

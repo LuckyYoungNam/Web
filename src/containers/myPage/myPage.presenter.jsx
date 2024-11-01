@@ -32,7 +32,7 @@ const MyPageUI = () => {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${accessToken}`,
-                        'withCredentials': true,
+                        "'withCredentials": true,
                     },
                 });
 
