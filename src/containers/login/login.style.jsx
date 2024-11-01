@@ -57,8 +57,8 @@ export const LoginBtn = styled.button`
       opacity: 0.8;
    }
        @media (min-width: 820px) {
-        width: 10vw;
-        height: 5vh;
+        width: 250px;
+        height: 50px;\
     }
     color: black;
 `;
