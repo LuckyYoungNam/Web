@@ -13,7 +13,7 @@ const MainUI = () => {
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
     const userData = JSON.parse(localStorage.getItem('userdata')) || {};
-    if(userData && userData.location && userData.businessName && userData.address) {
+    if(userData.location) {
         closeModal();
     }
     return (

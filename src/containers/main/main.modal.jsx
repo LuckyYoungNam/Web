@@ -17,7 +17,6 @@ const MainModal = ({ isOpen, closeModal, isModalOpen }) => {
         setAddress(fullAddress); // 선택한 주소를 상태에 저장
         setIsAddressModalOpen(false); // 주소 검색 모달 닫기
     };
-
     console.log(localStorage.getItem('accessToken'))
     const handleSubmit = () => {
         const postData = async () => {
@@ -38,7 +37,9 @@ const MainModal = ({ isOpen, closeModal, isModalOpen }) => {
               console.error('Error:', error.response ? error.response.data : error.message);
             }
           };
-          postData();
+          if(!localStorage.getItem('userdata')){
+            postData();
+          }
           closeModal();
     }
     const fetchData = async () => {
@@ -51,6 +52,9 @@ const MainModal = ({ isOpen, closeModal, isModalOpen }) => {
             });
             console.log(response.data); // 응답 데이터 출력
             localStorage.setItem('userdata', JSON.stringify(response.data));
+            setAddress(JSON.parse(localStorage.getItem('userdata')).address)
+            setBusinessName(JSON.parse(localStorage.getItem('userdata')).businessName)
+            setLocation(JSON.parse(localStorage.getItem('userdata')).location)
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
         }
@@ -59,7 +63,7 @@ const MainModal = ({ isOpen, closeModal, isModalOpen }) => {
     return (
         <Modal
             isOpen={isModalOpen}
-            onRequestClose={isModalOpen}
+            onRequestClose={closeModal}
             style={{
                 content: {
                     width: '375px',
