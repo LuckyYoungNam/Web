@@ -23,13 +23,15 @@ const ResultTextContainer = () => {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${accessToken}`
                 },
-                'withCredentials': true,  
+                credentials: "include",  // 'withCredentials' 대신 'credentials' 사용
                 body: JSON.stringify({ postPreContent }),
             });
+        
             if (response.ok) {
                 const data = await response.json();
-                localStorage.setItem('text', response.data.postGptContent)
-                onComplete(data);
+                // 응답 데이터에서 postGptContent만 추출하여 로컬 스토리지에 저장
+                localStorage.setItem('text', data.postGptContent);
+                onComplete(data);  // 응답 데이터를 onComplete 함수에 전달
             } else {
                 console.error("응답 오류:", response.statusText);
                 alert("서버 오류 발생");
@@ -38,8 +40,7 @@ const ResultTextContainer = () => {
             console.error("요청 오류:", error);
             alert("요청 오류 발생");
         }
-    };
-
+    }
     return (
         <ResultTextUI
             content={localStorage.getItem('text')}
