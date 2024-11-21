@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# 홍보사원, 영남이 Web 입니다 🕶️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🖥️ 프로젝트 소개
+50, 60 자영업자의 SNS 홍보 부담을 덜기 위해, 홍보 사진/글 자동화 제작 서비스
 
-## Available Scripts
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <img src="https://github.com/user-attachments/assets/d7aca65a-c026-4093-9918-592596bc3477" width="30%">
+    <img src="https://github.com/user-attachments/assets/2cebafcf-94fb-46e8-9085-302ba81ed64b" width="30%">
+    <img src="https://github.com/user-attachments/assets/0d941758-768a-4d27-856c-af4243231129" width="30%">
+    <img src="https://github.com/user-attachments/assets/6e306129-ac58-47d1-bcd6-6d725f2e7955" width="30%">
+    <img src="https://github.com/user-attachments/assets/3319331e-b5c0-4c27-a217-4143d442003a" width="30%">
+    <img src="https://github.com/user-attachments/assets/14815a1a-32fa-4dbe-affe-743fa362a2e6" width="30%">
+    <img src="https://github.com/user-attachments/assets/55e67b68-bd82-464f-a755-1d842ee1ad74" width="30%">
+</div>
 
-In the project directory, you can run:
+<br>
 
-### `npm start`
+## 📺 홍보사원, 영남이 실제 화면
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <img src="https://github.com/user-attachments/assets/f533ffc3-9526-4c71-b098-7da315f26cba" width="30%">
+    <img src="https://github.com/user-attachments/assets/4fc85db2-9ded-481a-a43d-8a185226d357" width="30%">
+    <img src="https://github.com/user-attachments/assets/32442834-73c5-4aef-9bbe-3d2d28ace22f" width="30%">
+    <img src="https://github.com/user-attachments/assets/36564222-74d4-4476-9247-b6cd71c9ad09" width="30%">
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🎥 시연 영상
+![홍보사원 영남이](https://github.com/user-attachments/assets/9d01408a-7b58-4c6f-9c9e-5e7a1739d975)
 
-### `npm test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🕰️ 개발 기간
+* 24.10.17 - 2024.11.02
 
-### `npm run build`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ⚙️ 개발 환경
+- React
+- Styled-Component
+- Zustand
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🧑‍🤝‍🧑 멤버 구성
+<p>
+    <a href="https://github.com/Kwon2do">
+      <img src="https://avatars.githubusercontent.com/u/154305826?v=4" width="100">
+    </a>
+    <a href="https://github.com/uminzz">
+      <img src="https://avatars.githubusercontent.com/u/163244001?v=4" width="100">
+    </a>
+</p>
 
-### `npm run eject`
+<br>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🛠️아키텍처 구조도
+<img src="https://github.com/user-attachments/assets/32065253-f09b-43c1-b390-92b0e78a0432" width="50%">
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📝 규칙
+- `커밋 컨벤션`
+    - Feat: 새로운 기능 추가
+    - Fix: 버그 수정
+    - Docs: 문서 수정
+    - Style: 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우
+    - Refactor: 코드 리팩토링
+    - Test: 테스트 코드, 리팩토링 테스트 코드 추가
+    - Chore: 빌드 업무 수정, 패키지 매니저 수정
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `branch 규칙`
+    - 이슈 번호와 기능을 딴 branch 명을 사용한다.
+    - 예시
+        - git checkout -b 타입/이슈번호
+        - git checkout -b feat/1
 
-## Learn More
+- `commit message 규칙`
+    - 종류: 메시지
+    - 예시
+        - Feat: 커밋 내용 - #이슈번호
+        - Feat: 로그인 구현 - #1
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `DTO 규칙`
+    - 엔티티명 + Res/Req + 역할 + DTO
+    - 예시
+        - UserResSaveDTO
+        - PostReqSaveDTO
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
